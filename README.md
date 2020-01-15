@@ -1,5 +1,7 @@
 # qiankun（乾坤）
 
+基于乾坤搭建的微前端平台
+
 [![npm version](https://img.shields.io/npm/v/qiankun.svg?style=flat-square)](https://www.npmjs.com/package/qiankun) [![coverage](https://img.shields.io/codecov/c/github/umijs/qiankun.svg?style=flat-square)](https://codecov.io/gh/umijs/qiankun) [![npm downloads](https://img.shields.io/npm/dt/qiankun.svg?style=flat-square)](https://www.npmjs.com/package/qiankun) [![Build Status](https://img.shields.io/travis/umijs/qiankun.svg?style=flat-square)](https://travis-ci.org/umijs/qiankun)
 
 > In Chinese traditional culture `qian` means heaven and `kun` stands for earth, so `qiankun` is the universe.
