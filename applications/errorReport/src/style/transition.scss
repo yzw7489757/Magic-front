@@ -1,0 +1,68 @@
+//globl transition css
+
+/*fade*/
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.28s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+/*fade*/
+.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+  transition: all .5s;
+}
+
+.breadcrumb-enter,
+.breadcrumb-leave-active {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.breadcrumb-move {
+  transition: all .5s;
+}
+
+.breadcrumb-leave-active {
+  position: absolute;
+}
+
+.slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+.slide-fade-leave-active {
+  position: absolute;
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to{
+  transform: translateX(1000px);
+  opacity: 0;
+}
+
+.slide-right-enter-active,.slide-left-enter-active {
+  transition: all .3s cubic-bezier(0.4, 0.7, 0.8, 0.9);
+}
+.slide-right-leave-active,.slide-left-leave-active {
+  position: absolute;
+  transition: all .3s cubic-bezier(0.9, 0.8, 0.7, 0.6);
+}
+.slide-right-enter{ // 向右位移500px 进入
+  transform: translateX(500px);
+  opacity: 0;
+}
+.slide-right-leave-to{ // 向左位移500px 离开
+  transform: translateX(-500px);
+  opacity: 0;
+}
+.slide-left-enter{// 向右位移500px 进入
+  transform: translateX(-500px);
+  opacity: 0;
+}
+.slide-left-leave-to{ // 向右位移500px 离开
+  transform: translateX(500px);
+  opacity: 0;
+}
