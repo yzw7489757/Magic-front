@@ -6,21 +6,21 @@
 import { getRecordList } from '@/api/performance'
 export default {
   name: "Performance",
-  data(){
+  data() {
     return {
-      recordList:[],
+      recordList: []
     }
   },
   components: {
     // ChartWrap: () => import('@/components/ChartWrap/index')
   },
-  methods:{
-    getRecord(){
+  methods: {
+    getRecord() {
       getRecordList()
     }
   },
   mounted() {
     this.getRecord()
-  },
+  }
 }
 </script>

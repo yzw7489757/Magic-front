@@ -6,21 +6,21 @@
 </template>
 
 <script>
-	import ElementUI from 'element-ui';
-	import Vue from 'vue';
+import ElementUI from 'element-ui'
+import Vue from 'vue'
 
-	export default {
-		name: 'HelloWorld',
-		props: {
-			msg: String,
-		},
-		data() {
-			return {
-				vueVersion: Vue.version,
-				elementVersion: ElementUI.version,
-			};
-		},
-	};
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String
+  },
+  data() {
+    return {
+      vueVersion: Vue.version,
+      elementVersion: ElementUI.version
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

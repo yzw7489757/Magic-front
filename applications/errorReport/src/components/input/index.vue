@@ -29,7 +29,7 @@
     </div>
 </template>
 <script>
-import Emitter from '@/mixins/emitter';
+import Emitter from '@/mixins/emitter'
 
 export default {
   name: 'Y-input',
@@ -87,7 +87,7 @@ export default {
   },
   watch: {
     value(val) {
-      this.defaultValue = val;
+      this.defaultValue = val
     }
   },
   computed: {
@@ -107,9 +107,9 @@ export default {
     */
     handleInput(event) {
       // 当前model 赋值
-      this.defaultValue = event.target.value;
+      this.defaultValue = event.target.value
       // vue 原生的方法 return 出去
-      this.$emit('input', event.target.value);
+      this.$emit('input', event.target.value)
       // 将当前的值发送到 aiFormItem 进行校验
       this.dispatch('y-form-item', 'on-form-change', event.target.value)
     },
@@ -119,12 +119,12 @@ export default {
     */
     handleBlur(event) {
       // vue 原生的方法 return 出去
-      this.$emit('blur', event.target.value);
+      this.$emit('blur', event.target.value)
       this.dispatch('y-form-item', 'on-form-blur', event.target.value)
     }
 
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 $height: 32px;

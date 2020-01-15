@@ -1,5 +1,5 @@
 {
-  "name": "Magic-front",
+  "name": "magic-front",
   "version": "1.3.14",
   "description": "micro frontend",
   "keywords": [
@@ -13,16 +13,19 @@
   "sideEffects": false,
   "scripts": {
     "start": "concurrently \"yarn start:main\" \"yarn start:performance\" \"yarn start:errorReport\"",
-    "install:applications": "yarn build && cd applications/main && yarn && cd ../performance && yarn && cd ../react15 && yarn && cd ../vue && yarn",
+    "install:apps": "yarn build && npm run install:main && npm run install:performance && npm run install:errorReport",
+    "install:main": "cd applications/main && yarn",
+    "install:performance": "cd applications/performance && yarn",
+    "install:errorReport": "cd applications/errorReport && yarn",
     "start:main": "cd applications/main && yarn start",
     "start:performance": "cd applications/performance && yarn start",
     "start:errorReport": "cd applications/errorReport && yarn start",
     "build": "father-build",
     "release": "np --no-cleanup --yolo --no-publish",
     "prepublishOnly": "yarn lint && yarn build",
-    "lint": "yarn lint:js && yarn lint:prettier",
+    "lint": "#yarn lint:js && yarn lint:prettier",
     "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "lint:fix": "yarn lint:js -- --fix",
+    "lint:fix": "# yarn lint:js -- --fix",
     "lint:prettier": "check-prettier lint",
     "prettier": "prettier -c --write **/*",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -67,7 +70,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "# lint-staged"
     }
   },
   "lint-staged": {

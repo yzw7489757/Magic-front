@@ -8,8 +8,8 @@
 
 <script>
 export default {
-  name:'mainContent',
-  data(){
+  name: 'mainContent',
+  data() {
     return {}
   }
 }

@@ -60,18 +60,18 @@ export default {
       return {
         [`icon-${iconPosition}`]: true, [animationClass]: !disabled, [`${size}-button`]: true, disabled, [`${type}-button`]: true
       }
-    },
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 $button-color-white: rgba(255,255,255,.9);
 $button-color: #606266;
-$primary:#ffd800;
+$primary:#9124a3;
 $success:#67C23A;
 $warning:#E6A23C;
-$danger:#F56C6C;
+$danger:#ef5350;
 $info:#909399;
 $plain:#FFFFFF;
 $plain-border-color:#dcdfe6;
@@ -79,6 +79,7 @@ $plain-border-color:#dcdfe6;
   box-sizing: border-box;
   font-size: var(--font-size);
   color: $button-color;
+  min-width: 70px;
   border-radius: var(--border-radius);
   background: var(--button-bg);
   display: inline-block;
@@ -124,12 +125,12 @@ $plain-border-color:#dcdfe6;
     background-color: var(--button-active-bg);
   }
   &.primary-button{
-    color:$button-color;
-    background-color:$primary;
-    border-color:$primary;
+    color:$button-color-white;
+    background:$primary;
+    border:1px solid $primary;
+    box-shadow: 0 2px 2px 0 rgba(156,39,176,.14), 0 3px 1px -2px rgba(156,39,176,.2), 0 1px 5px 0 rgba(156,39,176,.12);
     &:hover{
-      background-color:rgba($primary,.7);
-      border-color:rgba($primary,.7);
+      box-shadow: 0 14px 26px -12px rgba(156,39,176,.42), 0 4px 23px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(156,39,176,.2);
     }
   }
   &.info-button{
@@ -152,8 +153,9 @@ $plain-border-color:#dcdfe6;
   }
   &.danger-button{
     color:$button-color-white;
-    background-color:$danger;
+    background:$danger;
     border-color:$danger;
+    // box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(244,67,54,.4);
     &:hover{
       background-color:rgba($danger,.7);
       border-color:rgba($danger,.7);

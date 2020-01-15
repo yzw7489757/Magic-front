@@ -27,20 +27,20 @@
 import Card from '@/components/Card/index'
 import Bedge from '@/components/Bedge/index.vue'
 
-  export default {
-    components: {
-      Card,Bedge
-    },
-    props:{
-      appList:{
-        type:Array,
-        validator:(value)=>{
-          return Array.isArray(value)
-        },
-        default:()=>[]
-      }
+export default {
+  components: {
+    Card, Bedge
+  },
+  props: {
+    appList: {
+      type: Array,
+      validator: (value) => {
+        return Array.isArray(value)
+      },
+      default: () => []
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>

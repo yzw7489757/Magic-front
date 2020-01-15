@@ -10,8 +10,8 @@
 </template>
 <script>
 export default {
-  name:'Navigation',
-  data(){
+  name: 'Navigation',
+  data() {
     return {}
   }
 }

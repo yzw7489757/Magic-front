@@ -1,4 +1,4 @@
-<template>  
+<template>
   <span class="bedge bedge-wrap">
     <span :class="{'bedge-dot':true,'bedge-processing':running,'bedge-frozen':!running}"></span>
     <span class="bedge-text">{{text}}</span>
@@ -6,19 +6,19 @@
 </template>
 
 <script>
-  export default {
-    name:'badeg',
-    props:{
-      text: {
-        type: String,
-        default: () => ''
-      },
-      running: {
-        type: Boolean,
-        default: () => false
-      }
+export default {
+  name: 'badeg',
+  props: {
+    text: {
+      type: String,
+      default: () => ''
     },
+    running: {
+      type: Boolean,
+      default: () => false
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>

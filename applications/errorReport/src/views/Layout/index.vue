@@ -22,7 +22,7 @@ export default {
     Sidebar,
     MainContent,
     MainFooter
-  },
+  }
 }
 </script>
 

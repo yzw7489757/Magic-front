@@ -34,8 +34,8 @@ export default {
   },
   methods: {
     handleAfterLeave() {
-      this.$destroy(true);
-      this.$el.parentNode.removeChild(this.$el);
+      this.$destroy(true)
+      this.$el.parentNode.removeChild(this.$el)
     },
     clearTimer() {
       clearTimeout(this.timeout)
@@ -43,14 +43,14 @@ export default {
     startTimer() {
       this.timeout = setTimeout(() => {
         this.show = false
-      }, this.duration + this.animateTime);
+      }, this.duration + this.animateTime)
     }
   },
   mounted() {
     this.show = true
     this.startTimer()
   }
-};
+}
 </script>
 
 <style lang="scss">

@@ -13,7 +13,7 @@ export default {
   name: 'scrollBar',
   data () {
     return {
-      top: 0,
+      top: 0
     }
   },
   methods: {
@@ -36,7 +36,7 @@ export default {
           this.top = 0
         }
       }
-    },
+    }
   },
   created () {
   }
@@ -45,13 +45,11 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-@import 'src/style/variables.scss';
 
 .scroll-container {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: $menuBg;
   .scroll-content {
     position: absolute;
      width: 100%!important;
