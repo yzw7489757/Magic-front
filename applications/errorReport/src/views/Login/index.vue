@@ -60,7 +60,7 @@ export default {
         setToken(userInfo.token)
         setUserInfo(userInfo)
         this.$msg.success({
-          message: '登录成功',
+          text: '登录成功',
           duration: 2000
         }, () => {
           this.$router.push('/')

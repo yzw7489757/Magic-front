@@ -57,7 +57,7 @@ export default {
     text-transform: capitalize;
     font-size: 13px;
     padding: 10px 15px;
-    transition: all .15s ease-in;
+    transition:  background-color .15s ease-in;
   }
   &-icon{
     float:left;

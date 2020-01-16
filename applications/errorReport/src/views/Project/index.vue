@@ -47,7 +47,11 @@ export default {
           running: true, // 服务状态
           creator: 'string' // 创建者
         }
-      ]
+      ],
+      pagination: {
+        pageSize: 4,
+        pageNum: 1
+      }
     }
   },
   components: {
@@ -56,7 +60,7 @@ export default {
   },
   methods: {
     async triggerToSearchApplication(formInfo = {}) {
-      const result = await getApplicationList(formInfo)
+      const result = await getApplicationList(Object.assign(formInfo, this.pagination))
     }
 
   },

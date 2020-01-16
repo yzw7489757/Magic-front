@@ -10,7 +10,7 @@ import Vue from 'vue'
 import Message from './index.vue'
 
 // eslint-disable-next-line prefer-const
-function msg(type, text, callBack) {
+function msg(type, text, callback) {
   let msg
   let duration
   if (typeof text === 'string') {
@@ -28,6 +28,7 @@ function msg(type, text, callBack) {
         props: {
           type,
           duration: duration || Message.data().duration,
+          callback,
           text: msg
         },
         data() {

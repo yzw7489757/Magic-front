@@ -26,6 +26,10 @@ export default {
       default: 'info',
       validator: val => ['info', 'success', 'warning', 'error', 'primary'].includes(val)
     },
+    callback: {
+      type: Function,
+      default: () => () => {}
+    },
     text: {
       type: String,
       default: () => ''
@@ -46,6 +50,7 @@ export default {
     startTimer() {
       this.timeout = setTimeout(() => {
         this.show = false
+        this.callback()
       }, this.duration + this.animateTime)
     }
   },
