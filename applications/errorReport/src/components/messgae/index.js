@@ -27,11 +27,12 @@ function msg(type, text, callBack) {
       return h('Message', {
         props: {
           type,
+          duration: duration || Message.data().duration,
           text: msg
         },
         data() {
           return {
-            duration: duration || Message.data().duration
+            // duration: duration || Message.data().duration
           }
         }
       })
@@ -56,6 +57,9 @@ const MESSAGE = {
   warning(text, callBack) {
     msg('warning', text || '', callBack)
   },
+  primary(text, callBack) {
+    msg('primary', text || '', callBack)
+  },
   install(Vue) {
     if (typeof window !== 'undefined' && window.Vue) {
       Vue = window.Vue
@@ -65,6 +69,7 @@ const MESSAGE = {
       info: MESSAGE.info,
       success: MESSAGE.success,
       error: MESSAGE.error,
+      primary: MESSAGE.primary,
       warning: MESSAGE.warning
     }
   }

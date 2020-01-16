@@ -1,6 +1,6 @@
 <template>
   <div class="y-form-item" :class="{'hasError':hasError}">
-    <label :class="{'y-form-item-label-required':isRequired}" />
+    <label :class="{'y-form-item-label-required':isRequired && identification}" />
     <span v-if="label" :class="{'y-form-item-label':true,'hasLabel':label.trim()}" :style="{ width: form.labelWidth }">{{label}}</span>
     <div class="y-form-item-validate" :class="activeClass">
       <slot></slot>
@@ -26,6 +26,10 @@ export default {
     },
     prop: {
       type: String
+    },
+    identification: {
+      type: Boolean,
+      default: () => true
     }
   },
   computed: {
@@ -167,10 +171,14 @@ $info: #67c23a;
   &.error /deep/.yinput{
     border-color: $error;
   }
+  &.error /deep/.yselect .dropdown-toggle{
+    background-image: linear-gradient($error, $error), linear-gradient(#f55145, #f55145);
+  }
+  &.err /deep/ .yselect{
+    background-image: linear-gradient($info, $info), linear-gradient($info, $info);
+  }
 }
 .y-form-item {
-  display: inline-flex;
-  align-items: center;
   margin-bottom: 12px;
   &.hasError{
     margin-bottom: calc(12px + 1em);
@@ -178,7 +186,7 @@ $info: #67c23a;
   &-label{
     text-align: right;
     vertical-align: middle;
-    float: left;
+    float: none;
     font-size: 14px;
     color: #606266;
     line-height: 40px;

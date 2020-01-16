@@ -23,5 +23,6 @@ module.exports = {
     'handle-callback-err': 0,
     camelcase: 0,
     'no-undef': 1,
+    'prefer-promise-reject-errors':0
   },
 };

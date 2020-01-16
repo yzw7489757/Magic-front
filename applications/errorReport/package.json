@@ -1,5 +1,5 @@
 {
-  "name": "errorReport",
+  "name": "error-report",
   "version": "0.1.0",
   "scripts": {
     "start": "vue-cli-service serve",
@@ -8,10 +8,8 @@
   },
   "dependencies": {
     "@antv/g2plot": "^0.11.22",
-    "Qarticles": "^0.3.4",
     "axios": "^0.19.1",
     "core-js": "^3.3.2",
-    "element-ui": "^2.12.0",
     "nprogress": "^0.2.0",
     "vue": "^2.6.10",
     "vue-fullscreen": "^2.1.5",

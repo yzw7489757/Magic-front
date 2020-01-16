@@ -12,7 +12,7 @@
         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
     </y-modal>
-    <el-button @click="open=true"></el-button>
+    <y-button @click="open=true"></y-button>
   </div>
 </template>
 

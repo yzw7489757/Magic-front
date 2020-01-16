@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProjectController @onChange="getRecord"></ProjectController>
+    <ProjectController @onSearch="triggerToSearchApplication"></ProjectController>
     <ApplicationList :appList="applicationList"></ApplicationList>
   </div>
 </template>
@@ -8,7 +8,8 @@
 <script>
 import ApplicationList from './components/applicationList'
 import ProjectController from './components/project-controller'
-import { getRecordList } from '@/api/performance'
+import { getApplicationList } from '@/api/application'
+
 export default {
   name: "project",
   data() {
@@ -54,14 +55,13 @@ export default {
     ProjectController
   },
   methods: {
-    getRecord(options) {
-      console.log('options: ', options)
-      getRecordList()
+    async triggerToSearchApplication(formInfo = {}) {
+      const result = await getApplicationList(formInfo)
     }
 
   },
   mounted() {
-    this.getRecord()
+    this.triggerToSearchApplication()
   }
 }
 </script>

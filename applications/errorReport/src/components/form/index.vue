@@ -1,5 +1,5 @@
 <template>
-  <form class="y-form" @submit.prevent>
+  <form :class="{'y-form':true,'inline':inline}" @submit.prevent>
     <slot></slot>
   </form>
 </template>
@@ -25,6 +25,10 @@ export default {
     // 验证
     rules: {
       type: Object
+    },
+    inline: {
+      type: Boolean,
+      default: () => false
     }
   },
   data() {
@@ -104,3 +108,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.y-form.inline{
+  .y-form-item{
+    display: inline-flex;
+    align-items: center;
+  }
+  .y-form-item-label{
+    float: left;
+  }
+}
+</style>

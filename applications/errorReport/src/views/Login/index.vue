@@ -1,26 +1,24 @@
 <template>
   <div>
       <canvas class="login-container" ref="container" />
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="user-ruleForm">
-        <el-form-item label="" prop="userName">
-          <el-input v-model="ruleForm.userName" placeholder="username..."></el-input>
-        </el-form-item>
-         <el-form-item label="" prop="password">
-            <el-input v-model="ruleForm.password" @keyup.enter="Login" placeholder="password..."></el-input>
-          </el-form-item>
-         <el-form-item>
-          <el-button type="primary" @click="Login">Submit</el-button>
-        </el-form-item>
-      </el-form>
+      <y-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="user-ruleForm">
+        <y-form-item label="" prop="userName" :identification="false">
+          <y-input v-model="ruleForm.userName" placeholder="username..."></y-input>
+        </y-form-item>
+         <y-form-item label="" prop="password" :identification="false">
+            <y-input v-model="ruleForm.password" @keyup.enter="Login" placeholder="password..."></y-input>
+          </y-form-item>
+         <y-form-item>
+          <y-button type="primary" @click="Login">Submit</y-button>
+        </y-form-item>
+      </y-form>
   </div>
 
 </template>
 
 <script>
-import Qarticles from 'Qarticles'
 import { Login, Register } from '@/api/user'
 import { setToken, setUserInfo } from '@/utils/auth'
-import { Message } from 'element-ui'
 export default {
   name: 'login',
   data() {
@@ -42,47 +40,7 @@ export default {
     }
   },
   methods: {
-    generatorBackground() {
-      var canvas = this.$refs.container
-      const speed = 100
-      var covColorFuc = function (dot, w, h) {
-        return `rgba(${Math.floor(255 * (1 - dot.x / w))}, ${Math.floor(255 * (1 - dot.y / h))},${Math.floor(255 * (dot.speedArr[0] / 100))}, 0.6)`
-      }
 
-      var lineColorFuc = function (dot, w, h) {
-        return `rgba(${Math.floor(255 * (1 - dot.x / w))}, ${Math.floor(255 * (1 - dot.y / h))},${Math.floor(255 * (dot.speedArr[0] / 100))}, 0.3)`
-      }
-
-      var covSpeedFuc = function (speed) {
-        return Math.random() * speed * (Math.random() * 10 > 5 ? -1 : 1)
-      }
-
-      var options = {
-        lineLink: {
-          count: 2,
-          show: true
-        },
-        color: {
-          dotColorFuc: covColorFuc,
-          lineColorFuc: lineColorFuc
-        },
-        dot: {
-          physical: true,
-          speed: speed,
-          vxFuc: covSpeedFuc,
-          vyFuc: covSpeedFuc,
-          count: 80,
-          size: {
-            random: true,
-            max: 20,
-            min: 0
-          }
-        }
-
-      }
-
-      var qarticles = new Qarticles(canvas, options)
-    },
     submitForm() {
       return new Promise((resolve, reject) => {
         this.$refs.ruleForm.validate((valid) => {
@@ -101,18 +59,15 @@ export default {
         const userInfo = await Login(this.ruleForm)
         setToken(userInfo.token)
         setUserInfo(userInfo)
-        Message({
+        this.$msg.success({
           message: '登录成功',
-          type: 'success',
-          duration: 2000,
-          onClose: () => {
-            this.$router.push('/')
-          }
+          duration: 2000
+        }, () => {
+          this.$router.push('/')
         })
       } catch (e) {
-        Message({
+        this.$msg.error({
           message: e,
-          type: 'error',
           duration: 2000
         })
       }
@@ -128,15 +83,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.login-container{
-  position:absolute;
-  top:0;
-  left:0;
-  bottom:0;
-  right:0;
-}
 .user-ruleForm{
   margin: 200px auto;
   width:400px;
+  text-align:center;
 }
 </style>

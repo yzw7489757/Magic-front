@@ -5,7 +5,7 @@
       v-show="show"
       @mouseenter="clearTimer"
       @mouseleave="startTimer">
-      <svg-icon class="close" icon-class="close" @click.native="show=false"></svg-icon>
+      <svg-icon class="close" icon-class="msg-close" @click.native="show=false"></svg-icon>
       <span class="text">{{text}}</span>
     </div>
   </transition>
@@ -16,8 +16,7 @@ export default {
   name: 'message',
   data() {
     return {
-      animateTime: 700, // 动画时间
-      duration: 3000, // 显示的时间
+      animateTime: 500, // 动画时间
       show: false
     }
   },
@@ -25,11 +24,15 @@ export default {
     type: {
       type: String,
       default: 'info',
-      validator: val => ['info', 'success', 'warning', 'error'].includes(val)
+      validator: val => ['info', 'success', 'warning', 'error', 'primary'].includes(val)
     },
     text: {
       type: String,
-      default: ''
+      default: () => ''
+    },
+    duration: {
+      type: Number,
+      default: () => 3000
     }
   },
   methods: {
@@ -56,7 +59,7 @@ export default {
 <style lang="scss">
 .msg-enter-active,
 .msg-leave-active {
-  transition: all .7s cubic-bezier(.42, 0, .58, 1);
+  transition: all .5s cubic-bezier(.42, 0, .58, 1);
 }
 .msg-enter,
 .msg-leave-to {
@@ -69,26 +72,35 @@ export default {
   left: 50%;
   top: 60px;
   transform: translateX(-50%);
+  padding: 20px 15px;
   min-width: 300px;
-  padding: 10px 20px;
   color: rgba(255, 255, 255, 0.7);
   background: #f5f5f5;
   font-size: 14px;
-  line-height: 1.4;
-  border-radius: 4px;
+  line-height: 20px;
   z-index: 1000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border: 0;
+  border-radius: 3px;
+  color: #fff;
   &.info {
-    background: #909399;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(0,188,212,.4);
+    background-color: #00cae3;
   }
   &.success {
-    background: #67c23a;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(76,175,80,.4);
+    background-color: #55b559;
   }
   &.error {
-    background: #f56c6c;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(244,67,54,.4);
+    background-color: #f55145;
   }
   &.warning {
-    background: #e6a23c;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(255,152,0,.4);
+    background-color: #ff9e0f;
+  }
+  &.primary {
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(156,39,176,.4);
+    background-color: #a72abd;
   }
   .close{
     position: absolute;

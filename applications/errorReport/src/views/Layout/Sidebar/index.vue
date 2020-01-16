@@ -7,25 +7,22 @@
                 </router-link>
               </div>
               <div class="sidebar-content">
-                <el-menu mode="vertical" unique-opened :default-active="$route.path" :collapse="false" background-color="#fff" text-color="#3c4858" active-text-color="#fff">
-                  <sidebar-item :routes="routes"></sidebar-item>
-                </el-menu>
+                  <side-bar-nav :default-active="$route.path" :routes="routes" />
               </div>
           </div>
       </scroll-bar>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import routes from '@/router/index'
-import SidebarItem from './SidebarItem'
+import SideBarNav from './SideBarNav'
 import ScrollBar from '@/components/ScrollBar'
 
 export default {
-  name:'sidebar',
-  components: { SidebarItem, ScrollBar },
+  name: 'sidebar',
+  components: { SideBarNav, ScrollBar },
   computed: {
-    routes(){
+    routes() {
       return routes.filter(route => !route.hidden)
     }
   }

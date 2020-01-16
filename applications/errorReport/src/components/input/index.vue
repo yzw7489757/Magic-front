@@ -96,7 +96,10 @@ export default {
         error, title, info, inputColor, size
       } = this
       return {
-        error_input: error && inputColor, info_input: info && inputColor, title_input: title && inputColor, [`${size}-input`]: true
+        error_input: error && inputColor,
+        info_input: info && inputColor,
+        title_input: title && inputColor,
+        [`${size}-input`]: true
       }
     }
   },

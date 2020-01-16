@@ -1,99 +1,98 @@
-import axios from 'axios';
-import { Message } from 'element-ui';
-import { router } from '@/main';
-import store from '@/store';
+import axios from 'axios'
+import Message from '@/components/Messgae/index.js'
+import { router } from '@/main'
+import store from '@/store'
 
+const NOT_PRO = process.env.NODE_ENV !== 'production'
 // 重试次数
-axios.defaults.retry = 1;
-axios.defaults.retryDelay = 1000;
+axios.defaults.retry = 1
+axios.defaults.retryDelay = 1000
 
 // 配置切换路由取消请求,
 // const { CancelToken } = axios;
 // const source = CancelToken.source();
 // store.dispatch('ChangeRequestToken', source);
 
-const tip = (msg, time = 5) =>
-  Message({
-    message: msg,
-    type: 'error',
-    duration: time * 1000,
-  });
+const tip = (msg, time = 5) => Message.error({
+  text: '请登录',
+  duration: time * 1000
+})
 
 const service = axios.create({
   baseURL: 'http://127.0.0.1:3000/',
-  timeout: 30 * 1000,
+  timeout: 30 * 1000
   // cancelToken: source.token
-});
+})
 
 function reLogin() {
-  window.sessionStorage.removeItem('token');
+  window.sessionStorage.removeItem('token')
   router.push({
-    path: '/login',
-  });
-  tip('登录失效，请重新登录', 3);
+    path: '/login'
+  })
+  tip('登录失效，请重新登录', 3)
 }
 
 service.interceptors.request.use(
   config => {
     // config.cancelToken = store.getters.source.token;
     if (sessionStorage.getItem('token')) {
-      config.headers.Authorization = `Bearer ${sessionStorage.getItem('token')}`; // 让每个请求携带自定义token 请根据实际情况自行修改
+      config.headers.Authorization = `Bearer ${sessionStorage.getItem('token')}` // 让每个请求携带自定义token 请根据实际情况自行修改
     }
-    return config;
+    return config
   },
   error => {
     // Do something with request error
-    console.log(error); // for debug
-    Promise.reject(error);
-  },
-);
+    console.log(error) // for debug
+    Promise.reject(error)
+  }
+)
 
 service.interceptors.response.use(
   response => {
-    const { code, data, message = '' } = response.data;
+    const { code, data, message = '' } = response.data
     if (code === 401) {
-      reLogin();
-      return Promise.reject(message);
+      reLogin()
+      return Promise.reject(message)
     } else if (code !== 200) {
-      tip(message);
+      NOT_PRO && tip(message)
     } else {
-      return Promise.resolve(data);
+      return Promise.resolve(data)
     }
   },
   error => {
-    const { config = {}, response, message = '' } = error;
+    const { config = {}, response, message = '' } = error
     if (response && response.status === 401) {
       // 401 token有误
-      reLogin();
-      return Promise.reject(error);
+      reLogin()
+      return Promise.reject(error)
     }
     //  If config does not exist or the retry option is not set, reject
     if (!config.retry) {
-      if (message) tip(message);
-      return Promise.reject(error);
+      if (message) tip(message)
+      return Promise.reject(error)
     }
 
     // Set the variable for keeping track of the retry count
-    config.__retryCount = config.__retryCount || 0;
+    config.__retryCount = config.__retryCount || 0
 
     //  Check if we've maxed out the total number of retries
     if (config.__retryCount >= config.retry) {
-      tip('请求失败，重新请求中...', 30);
-      return Promise.reject(error);
+      tip('请求失败，重新请求中...', 30)
+      return Promise.reject(error)
     }
-    config.__retryCount += 1;
+    config.__retryCount += 1
 
     // Create new promise to handle exponential backoff
     const backoff = new Promise(resolve => {
       // console.log('Re-request Num:', config.__retryCount)
       setTimeout(() => {
-        resolve();
-      }, config.retryDelay || 1);
-    });
+        resolve()
+      }, config.retryDelay || 1)
+    })
 
     // Return the promise in which recalls axios to retry the request
-    return backoff.then(() => service(config));
-  },
-);
+    return backoff.then(() => service(config))
+  }
+)
 
-export default service;
+export default service

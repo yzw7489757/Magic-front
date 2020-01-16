@@ -12,20 +12,13 @@
         <slot></slot>
       </fullscreen>
     </div>
-    <el-popover
-      ref="popover"
-      placement="top-start"
-      :title="title"
-      trigger="hover">
-      <div v-html="tip"></div>
-    </el-popover>
   </div>
 </template>
 
 <script>
 import fullscreen from 'vue-fullscreen'
 import Vue from 'vue'
-import { mapGetters, mapState, mapMutations, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 Vue.use(fullscreen)
 
 export default {

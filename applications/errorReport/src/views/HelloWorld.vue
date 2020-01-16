@@ -1,12 +1,11 @@
 <template>
   <div class="hello1">
     <h1>{{ msg }}</h1>
-    <p>vue version: {{ vueVersion }}, element version: {{ elementVersion }}</p>
+    <p>vue version: {{ vueVersion }}, </p>
   </div>
 </template>
 
 <script>
-import ElementUI from 'element-ui'
 import Vue from 'vue'
 
 export default {
@@ -16,8 +15,7 @@ export default {
   },
   data() {
     return {
-      vueVersion: Vue.version,
-      elementVersion: ElementUI.version
+      vueVersion: Vue.version
     }
   }
 }

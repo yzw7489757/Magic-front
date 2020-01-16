@@ -1,11 +1,11 @@
 <template>
-    <div class="btn-group">
-        <li @click="toggleMenu()" class="dropdown-toggle" :class="{'noSelected':value === undefined}">
-          {{value === undefined ? (placeholder || '') : value}}
-          <span class="caret"></span>
+    <div class="y-select yselect">
+        <li @click="toggleMenu()" class="dropdown-toggle" :class="{'noSelected':noSelected }">
+          {{noSelected ? (placeholder || 'select...') : getCurrentLabel }}
+          <span class="caret" :class="{'opened':showMenu}"></span>
         </li>
 
-        <ul class="dropdown-menu" v-if="showMenu">
+        <ul class="dropdown-menu" v-show="showMenu">
             <li v-for="(option, idx) in options" :key="option.value" :class='{"active": option.value === value}'>
                 <a href="javascript:void(0)" @click="updateOption(option,idx)">
                     {{ option.label }}
@@ -16,12 +16,15 @@
 </template>
 
 <script>
+import Emitter from '@/mixins/emitter'
 export default {
   data() {
     return {
-      showMenu: false
+      showMenu: false,
+      defaultValue: this.value
     }
   },
+  mixins: [Emitter],
   props: {
     options: {
       type: Array
@@ -39,6 +42,20 @@ export default {
       default: () => true
     }
   },
+  computed: {
+    noSelected() {
+      return this.value === undefined || this.value === '' || this.value === null
+    },
+    getCurrentLabel() {
+      const selectedItem = this.options.find(item => item.value === this.value)
+      return selectedItem ? selectedItem.label : ' '
+    }
+  },
+  watch: {
+    value(val) {
+      this.defaultValue = val
+    }
+  },
   mounted() {
     if (this.closeOnOutsideClick) {
       document.addEventListener('click', this.clickHandler)
@@ -51,20 +68,27 @@ export default {
 
   methods: {
     updateOption(option) {
-      console.log('option: ', option)
       this.showMenu = false
+      this.$emit('input', option.value)
       this.$emit('onChange', option.value, option)
+      this.dispatch('y-form-item', 'on-form-change', option.value)
     },
 
     toggleMenu() {
+      // console.log('this.showMenu: ', this.showMenu)
+      // if (this.showMenu) {
+      //   this.dispatch('y-form-item', 'on-form-blur', this.value)
+      // }
       this.showMenu = !this.showMenu
     },
 
     clickHandler(event) {
       const { target } = event
       const { $el } = this
-
       if (!$el.contains(target)) {
+        if (this.showMenu) {
+          this.dispatch('y-form-item', 'on-form-blur', this.value)
+        }
         this.showMenu = false
       }
     }
@@ -74,7 +98,7 @@ export default {
 
 <style scoped lang="scss">
 
-.btn-group {
+.y-select {
   min-width: 160px;
   height: 40px;
   position: relative;
@@ -82,9 +106,6 @@ export default {
   display: inline-block;
   vertical-align: middle;
 }
-// .btn-group a:hover {
-//   text-decoration: none;
-// }
 
 .dropdown-toggle {
   color: #636b6f;
@@ -93,7 +114,8 @@ export default {
   text-transform: none;
   font-weight: 300;
   margin-bottom: 7px;
-  border: 0;
+  // border: 1px solid #ddd;
+  // border-radius: 4px;
   background-image: linear-gradient(#009688, #009688), linear-gradient(#D2D2D2, #D2D2D2);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
@@ -102,7 +124,6 @@ export default {
   transition: background-color .3s ease-out,color .3s ease-in;
   float: none;
   box-shadow: none;
-  border-radius: 0;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -110,7 +131,7 @@ export default {
     color: rgba(0,0,0,.25);
   }
   &:hover {
-    background: rgba(0,0,0,.05);
+    background-color: #eee;
     cursor: pointer;
   }
 }
@@ -120,6 +141,8 @@ export default {
   top: 100%;
   left: 0;
   z-index: 1000;
+  max-height:250px;
+  overflow-y:auto;
   float: left;
   min-width: 160px;
   padding: 5px 0;
@@ -163,11 +186,15 @@ export default {
   height: 0;
   margin-left: -24px;
   vertical-align: middle;
-  border-top: 4px dashed;
-  border-top: 4px solid \9;
+  border-top: 4px dashed ;
   border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
+  border-left: 4px solid transparent ;
+  transform: rotate(90deg);
   right: 10px;
+  transition: transform .3s;
+  &.opened{
+    transform: rotate(0deg);
+  }
 }
 
 </style>
