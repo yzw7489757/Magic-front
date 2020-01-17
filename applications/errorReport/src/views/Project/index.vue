@@ -1,7 +1,17 @@
 <template>
   <div>
-    <ProjectController @onSearch="triggerToSearchApplication"></ProjectController>
+    <ProjectController @onSearch="triggerToSearchApplication" ref="projectFilter"></ProjectController>
     <ApplicationList :appList="applicationList"></ApplicationList>
+     <y-page
+      v-model="pageNum"
+      :page-count="countPage"
+      :page-range="3"
+      :click-handler="pageChange"
+      :prev-text="'Prev'"
+      :next-text="'Next'"
+      container-class='pagination'
+      :first-last-button="true">
+    </y-page>
   </div>
 </template>
 
@@ -9,9 +19,10 @@
 import ApplicationList from './components/applicationList'
 import ProjectController from './components/project-controller'
 import { getApplicationList } from '@/api/application'
-
+import pagination from '@/mixins/pagination'
 export default {
   name: "project",
+  mixins: [pagination],
   data() {
     return {
       applicationList: [
@@ -47,11 +58,7 @@ export default {
           running: true, // 服务状态
           creator: 'string' // 创建者
         }
-      ],
-      pagination: {
-        pageSize: 4,
-        pageNum: 1
-      }
+      ]
     }
   },
   components: {
@@ -60,9 +67,14 @@ export default {
   },
   methods: {
     async triggerToSearchApplication(formInfo = {}) {
-      const result = await getApplicationList(Object.assign(formInfo, this.pagination))
+      const { list, countPage, count } = await getApplicationList({ ...formInfo, pageNum: this.pageNum, pageSize: this.pageSize })
+      this.applicationList = list
+      this.countPage = countPage
+      this.count = count
+    },
+    pageChanged() {
+      this.triggerToSearchApplication(this.$refs.projectFilter.application)
     }
-
   },
   mounted() {
     this.triggerToSearchApplication()

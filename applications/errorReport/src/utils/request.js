@@ -14,7 +14,7 @@ axios.defaults.retryDelay = 1000
 // store.dispatch('ChangeRequestToken', source);
 
 const tip = (msg, time = 5) => Message.error({
-  text: '请登录',
+  text: msg,
   duration: time * 1000
 })
 

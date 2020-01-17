@@ -63,7 +63,7 @@ export default {
           text: '登录成功',
           duration: 2000
         }, () => {
-          this.$router.push('/')
+          this.$router.replace('/')
         })
       } catch (e) {
         this.$msg.error({

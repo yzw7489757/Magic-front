@@ -127,7 +127,6 @@ export default {
         await addNewApplication({
           ...this.projectInfo,
           createTime: new Date(), // 创建时间
-          running: false, // 服务状态
           creator: getUserInfo().nickName // 创建者
         })
         this.toggleModal()
@@ -135,6 +134,9 @@ export default {
       } catch (e) {
         this.$msg.error(e)
       }
+    },
+    mounted () {
+
     }
   }
 }
