@@ -3,14 +3,13 @@
     <ProjectController @onSearch="triggerToSearchApplication" ref="projectFilter"></ProjectController>
     <ApplicationList :appList="applicationList"></ApplicationList>
      <y-page
+      v-if="count"
       v-model="pageNum"
       :page-count="countPage"
-      :page-range="3"
       :click-handler="pageChange"
       :prev-text="'Prev'"
       :next-text="'Next'"
-      container-class='pagination'
-      :first-last-button="true">
+      container-class='pagination'>
     </y-page>
   </div>
 </template>
@@ -25,40 +24,7 @@ export default {
   mixins: [pagination],
   data() {
     return {
-      applicationList: [
-        {
-          id: 2,
-          projectName: 'string', // 项目名称
-          createTime: Date.now(), // 创建时间
-          platform: 'all', // 项目运行环境
-          running: true, // 服务状态
-          creator: 'string' // 创建者
-        },
-        {
-          id: 22,
-          projectName: 'string', // 项目名称
-          createTime: Date.now(), // 创建时间
-          platform: 'all', // 项目运行环境
-          running: false, // 服务状态
-          creator: 'string' // 创建者
-        },
-        {
-          id: 24,
-          projectName: 'string', // 项目名称
-          createTime: Date.now(), // 创建时间
-          platform: 'H5', // 项目运行环境
-          running: false, // 服务状态
-          creator: 'string' // 创建者
-        },
-        {
-          id: 52,
-          projectName: 'string', // 项目名称
-          createTime: Date.now(), // 创建时间
-          platform: 'PC', // 项目运行环境
-          running: true, // 服务状态
-          creator: 'string' // 创建者
-        }
-      ]
+      applicationList: []
     }
   },
   components: {
@@ -77,7 +43,7 @@ export default {
     }
   },
   mounted() {
-    this.triggerToSearchApplication()
+    this.pageChanged()
   }
 }
 </script>

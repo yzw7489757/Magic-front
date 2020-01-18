@@ -47,11 +47,12 @@ export default {
       application: {
         projectName: '',
         creator: '',
-        running: 0
+        running: ''
       },
       runningList: [
-        { label: '运行中', value: 1 },
-        { label: '关闭', value: 0 }
+        { label: '全部', value: '' },
+        { label: '运行中', value: '1' },
+        { label: '关闭', value: '0' }
       ],
       options: [
         { label: 'H5', value: 'H5' },
@@ -106,6 +107,23 @@ export default {
     toggleModal() {
       this.open = !this.open
       this.$refs.projectInfo.resetFields()
+      // let i = 0
+      // const options = this.options
+      // function addNew () {
+      //   i++
+      //   let r = Math.random()
+      //   addNewApplication({
+      //     projectName: '测试项目' + i + r.toString(36).split('').join('.').substr(4, 7), // 项目名称
+      //     running: Number(r > 0.5) ? '0' : '1',
+      //     platform: options[(r * 3) | 0].value, // 项目运行环境
+      //     createTime: new Date(Date.now() - r * 24 * 3600 * 365 * 1000), // 创建时间
+      //     creator: getUserInfo().nickName // 创建者
+      //   })
+      //   if (i < 1000) {
+      //     window.requestAnimationFrame(addNew)
+      //   }
+      // }
+      // window.requestAnimationFrame(addNew)
     },
     validator() {
       return new Promise((resolve, reject) => {
@@ -134,9 +152,6 @@ export default {
       } catch (e) {
         this.$msg.error(e)
       }
-    },
-    mounted () {
-
     }
   }
 }

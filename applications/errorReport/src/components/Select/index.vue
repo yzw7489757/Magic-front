@@ -1,7 +1,7 @@
 <template>
     <div class="y-select yselect">
         <li @click="toggleMenu()" class="dropdown-toggle" :class="{'noSelected':noSelected }">
-          {{noSelected ? (placeholder || 'select...') : getCurrentLabel }}
+          <p class="y-select-content">{{noSelected ? (placeholder || '...') : getCurrentLabel }} &nbsp;</p>
           <span class="caret" :class="{'opened':showMenu}"></span>
         </li>
 
@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     noSelected() {
-      return this.value === undefined || this.value === '' || this.value === null
+      return this.value === undefined || this.value === null
     },
     getCurrentLabel() {
       const selectedItem = this.options.find(item => item.value === this.value)
@@ -105,6 +105,11 @@ export default {
   margin: 10px 1px;
   display: inline-block;
   vertical-align: middle;
+  &-content{
+    min-height: 1em;
+    white-space: nowrap;
+    overflow:hidden;
+  }
 }
 
 .dropdown-toggle {

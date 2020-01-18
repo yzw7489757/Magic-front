@@ -15,7 +15,7 @@
             <td>{{item.projectName}}</td>
             <td>{{item.createTime | time}}</td>
             <td>{{item.platform}}</td>
-            <td><Bedge :text="item.running?'running':'stoped'" :running="item.running" /></td>
+            <td><Bedge :text="item.running === '1'?'running':'stoped'" :running="item.running === '1'" /></td>
             <td>{{item.creator}}</td>
           </tr>
         </tbody>
