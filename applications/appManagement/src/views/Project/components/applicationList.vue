@@ -1,5 +1,5 @@
 <template>
-  <Card>
+  <Card tableName="Application List" describe="Operation status of all sub applications">
       <table class="project-list">
         <thead>
           <tr>

@@ -18,10 +18,8 @@ export default function Framework(props) {
       <header className={style.header}>
         <nav>
           <ol>
-            <li><a onClick={() => goto('home', '/')}>home</a></li>
-            <li><a onClick={() => goto('react15 app', '/15react15')}>react15 + antd2</a></li>
-            <li><a onClick={() => goto('vue app', '/vue')}>vue2 + element2</a></li>
-            <li><a onClick={() => goto('react app', '/react')}>react16 + antd3</a></li>
+            <li><a onClick={() => goto('home', '/')}>Home</a></li>
+            <li><a onClick={() => goto('apps', '/apps')}>Apps Management</a></li>
           </ol>
         </nav>
       </header>

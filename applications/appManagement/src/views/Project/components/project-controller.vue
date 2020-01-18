@@ -12,7 +12,7 @@
       </y-form-item>
       <y-form-item label=" " >
         <y-button type="primary" @click="$emit('onSearch', application)">查询</y-button>
-        <y-button type="primary" @click="toggleModal">新增</y-button>
+        <y-button type="primary" @click="toggleModal">注册子应用</y-button>
       </y-form-item>
     </y-form>
 

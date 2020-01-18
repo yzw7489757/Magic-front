@@ -1,8 +1,8 @@
 <template>
   <div class="card">
-    <div class="card-header">
-      <h4 class="card-title">Simple Table</h4>
-      <div class="card-category"> Here is a subtitle for this table</div>
+    <div class="card-header" v-if="tableName||describe">
+      <h4 class="card-title">{{tableName}}</h4>
+      <div class="card-category">{{describe}}</div>
     </div>
     <div class="card-body">
       <slot></slot>
@@ -12,7 +12,17 @@
 
 <script>
 export default {
-  name: 'card'
+  name: 'card',
+  props: {
+    tableName: {
+      type: String,
+      default: () => ''
+    },
+    describe: {
+      type: String,
+      default: () => ''
+    }
+  }
 }
 </script>
 

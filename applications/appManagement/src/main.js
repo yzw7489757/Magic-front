@@ -17,7 +17,7 @@ let instance = null
 
 function render() {
   router = new VueRouter({
-    base: window.__POWERED_BY_QIANKUN__ ? '/vue' : '/',
+    base: window.__POWERED_BY_QIANKUN__ ? '/apps' : '/',
     mode: 'history',
     routes
   })
