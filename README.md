@@ -4,7 +4,7 @@ Micro front end platform based on `qiankun`。
 
 ## Framework
 
-![](architecture.png)
+![Framework](./architecture.png)
 
 ## 🎁 Acknowledgements
 
