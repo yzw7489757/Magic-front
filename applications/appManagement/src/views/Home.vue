@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png"/>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
     <y-modal :visible="open" @hide="hideModal" defaultWidth="400px">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -12,7 +10,7 @@
         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
     </y-modal>
-    <y-button @click="open=true"></y-button>
+    <y-button @click="open=true">Open</y-button>
   </div>
 </template>
 
@@ -26,7 +24,6 @@ export default {
     }
   },
   components: {
-    HelloWorld
   },
   methods: {
     hideModal() {

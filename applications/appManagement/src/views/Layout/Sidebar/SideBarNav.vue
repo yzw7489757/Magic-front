@@ -7,7 +7,7 @@
             <template v-if="!child.hidden">
                 <li
                   :key="item.path + '/' + child.path"
-                  :class="{'menu-item':true,'active':defaultActive === (item.path + '/' + child.path)}"
+                  :class="{'menu-item':true, 'active': defaultActive.indexOf(item.path + '/' + child.path) !== -1}"
                   v-if="child.meta  && child.meta.title">
                   <router-link
                     class="menu-link"
@@ -20,7 +20,8 @@
                       <p
                       class="menu-title"
                       v-if="child.meta && child.meta.title"
-                      >{{child.meta.title}}</p>
+                      >{{child.meta.title}}
+                      </p>
                   </router-link>
                 </li>
             </template>

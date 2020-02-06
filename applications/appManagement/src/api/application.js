@@ -10,3 +10,8 @@ export const getApplicationList = (params) => request({
   method: 'get',
   params
 })
+export const updateApplication = (data) => request({
+  url: '/api/application/update',
+  method: 'post',
+  data
+})

@@ -1,10 +1,12 @@
 <template>
-    <router-view></router-view>
+  <div>
+    404 NotFound
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'project'
+  name: 'NotFound'
 }
 </script>
 

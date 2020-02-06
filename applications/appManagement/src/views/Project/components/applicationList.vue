@@ -8,6 +8,8 @@
             <th>运行环境</th>
             <th>运行状态</th>
             <th>创建者</th>
+            <th>状态</th>
+            <th>操作</th>
           </tr>
         </thead>
         <tbody>
@@ -17,6 +19,16 @@
             <td>{{item.platform}}</td>
             <td><Bedge :text="item.running === '1'?'running':'stoped'" :running="item.running === '1'" /></td>
             <td>{{item.creator}}</td>
+            <td>
+                <y-swtich
+                :value="item.running"
+                @onChange="(status)=>$emit('onChange',item,status)"
+                open-text="启用"
+                close-text="停用" />
+            </td>
+            <td>
+                <y-button @click="$router.push({name:'projectDetail',params:{id:item.id}})">管理</y-button>
+            </td>
           </tr>
         </tbody>
       </table>

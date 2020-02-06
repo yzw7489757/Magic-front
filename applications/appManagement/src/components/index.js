@@ -7,6 +7,7 @@ import Input from '@/components/Input'
 import Button from '@/components/Button'
 import Select from '@/components/Select'
 import Pagination from '@/components/Pagination'
+import Swtich from '@/components/Swtich'
 import Message from '@/components/Messgae/index.js'
 
 Vue.use(Message)
@@ -20,3 +21,4 @@ Vue.component('y-input', Input)
 Vue.component('y-button', Button)
 Vue.component('y-select', Select)
 Vue.component('y-page', Pagination)
+Vue.component('y-swtich', Swtich)

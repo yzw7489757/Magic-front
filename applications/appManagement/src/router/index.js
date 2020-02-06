@@ -24,12 +24,31 @@ const routes = [
         }
       },
       {
-        path: 'projectList',
-        name: 'projectList',
+        path: 'project',
+        name: 'project',
         meta: {
           title: '应用信息'
         },
-        component: () => import('@/views/Project/index')
+        redirect: { name: 'projectList' },
+        component: () => import('@/views/Project/index'),
+        children: [
+          {
+            path: 'list',
+            name: 'projectList',
+            component: () => import('@/views/Project/ProjectList'),
+            meta: {
+              title: '应用列表'
+            }
+          },
+          {
+            path: 'detail/:id',
+            name: 'projectDetail',
+            component: () => import('@/views/Project/ProjectDetail'),
+            meta: {
+              title: '应用详情'
+            }
+          }
+        ]
       },
       {
         path: 'list',
@@ -40,23 +59,23 @@ const routes = [
         component: () => import('@/views/Performance/index')
       },
       {
-        path: 'detail',
-        name: 'detail',
+        path: '/*',
+        hidden: true,
         meta: {
-          title: '性能信息'
+          title: '404'
         },
-        component: () => import('../views/About.vue')
-      },
-      {
-        path: 'performance',
-        component: Layout,
-        meta: {
-          title: '性能监控列表'
-        }
+        component: () => import('@/views/NotFound/index')
       }
     ]
   },
-
+  {
+    path: '/*',
+    hidden: true,
+    meta: {
+      title: '404'
+    },
+    component: () => import('@/views/NotFound/index')
+  },
   {
     path: '/',
     redirect: '/views/home',
