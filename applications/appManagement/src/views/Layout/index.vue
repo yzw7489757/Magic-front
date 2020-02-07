@@ -2,7 +2,7 @@
   <div class="app-wrapper">
     <sidebar></sidebar>
     <div class="main-container">
-      <navigation></navigation>
+      <navigation v-if="QIANKUN"></navigation>
       <main-content></main-content>
       <main-footer></main-footer>
     </div>
@@ -22,6 +22,11 @@ export default {
     Sidebar,
     MainContent,
     MainFooter
+  },
+  computed: {
+    QIANKUN() {
+      return !window.__POWERED_BY_QIANKUN__
+    }
   }
 }
 </script>

@@ -59,9 +59,9 @@ const request = url =>
 
 registerMicroApps(
   [
-    { name: 'react app', entry: '//localhost:7100', render, activeRule: genActiveRule('/react') },
-    { name: 'react15 app', entry: '//localhost:7102', render, activeRule: genActiveRule('/15react15') },
-    { name: 'vue app', entry: '//localhost:7101', render, activeRule: genActiveRule('/vue') },
+    { name: 'applications', entry: '//localhost:7101', render, activeRule: genActiveRule('/apps') },
+    // { name: 'react app', entry: '//localhost:7100', render, activeRule: genActiveRule('/react') },
+    { name: 'performance', entry: '//localhost:7102', render, activeRule: genActiveRule('/performance') },
   ],
   {
     beforeLoad: [
@@ -85,7 +85,7 @@ registerMicroApps(
   },
 );
 
-setDefaultMountApp('/react');
+setDefaultMountApp('/');
 runAfterFirstMounted(() => console.info('first app mounted'));
 
 start({ prefetch: true, fetch: request });

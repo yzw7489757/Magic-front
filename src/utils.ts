@@ -2,6 +2,7 @@
  * @author Kuitos
  * @since 2019-05-15
  */
+import { getMountedApps } from 'single-spa';
 
 export async function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -17,4 +18,10 @@ export function isConstructable(fn: () => void | FunctionConstructor) {
     constructableFunctionRegex.test(fn.toString()) ||
     classRegex.test(fn.toString())
   );
+}
+
+export function appStatusObtain():string[] {
+  const allMountedApps = getMountedApps();
+  console.log('allMountedApps: ', allMountedApps);
+  return getMountedApps();
 }

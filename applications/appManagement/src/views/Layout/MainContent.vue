@@ -16,7 +16,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .main-content{
-  margin-top:70px;
   padding: 30px 15px;
   min-height: calc(100vh - 123px);
 }

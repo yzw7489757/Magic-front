@@ -25,4 +25,20 @@
   height: 100%;
 }
 
+@mixin text($fontSize: 14px, $lineHeight: 14px, $color: #666, $fontWeight: 300, $fontFamily: inherit) {
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  font-weight: $fontWeight;
+  font-family: $fontFamily;
+  color: $color;
+}
+
+@mixin title($fontSize: 18px, $lineHeight: 20px, $color: #333, $fontWeight: 500, $fontFamily: inherit) {
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  font-weight: $fontWeight;
+  font-family: $fontFamily;
+  color: $color;
+}
+
 
