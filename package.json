@@ -13,7 +13,7 @@
   "sideEffects": false,
   "scripts": {
     "start": "concurrently \"yarn start:main\" \"yarn start:performance\" \"yarn start:appManagement\"",
-    "install:apps": "yarn build && npm run install:main && npm run install:performance && npm run install:appManagement",
+    "install:apps": "yarn && npm run install:main && npm run install:performance && npm run install:appManagement",
     "install:main": "cd applications/main && yarn",
     "install:performance": "cd applications/performance && yarn",
     "install:appManagement": "cd applications/appManagement && yarn",
