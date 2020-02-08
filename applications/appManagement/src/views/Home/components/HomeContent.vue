@@ -71,11 +71,13 @@ export default {
         lineSmooth: Chartist.Interpolation.cardinal({
           tension: 0
         }),
+        // showArea: true,
+        fullWidth: true,
         low: 0,
         high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: {
           top: 0,
-          right: 0,
+          right: 10,
           bottom: 0,
           left: 0
         }
@@ -89,7 +91,7 @@ export default {
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
       var dataCompletedTasksChart = {
-        labels: ['12am', '3pm', '6pm', '9pm', '12pm', '3am', '6am', '9am'],
+        labels: ['12am', '3pm', '6pm', '9pm', '12pm', '3am', '6am', '9am'].map(time => time.substring(time.length - 1, 0)),
         series: [
           [230, 750, 450, 300, 280, 240, 200, 190]
         ]
@@ -100,16 +102,17 @@ export default {
           tension: 0
         }),
         low: 0,
+        fullWidth: true,
         high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: {
           top: 0,
-          right: 0,
+          right: 10,
           bottom: 0,
           left: 0
         }
       }
 
-      var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart)
+      var completedTasksChart = new Chartist.Line('#emailsSubscriptionChart', dataCompletedTasksChart, optionsCompletedTasksChart)
 
       // start animation for the Completed Tasks Chart - Line Chart
       md.startAnimationForLineChart(completedTasksChart)
@@ -118,7 +121,7 @@ export default {
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
       var dataEmailsSubscriptionChart = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(month => month.substr(0, 1)),
         series: [
           [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
 
@@ -129,10 +132,11 @@ export default {
           showGrid: false
         },
         low: 0,
+        fullWidth: true,
         high: 1000,
         chartPadding: {
           top: 0,
-          right: 5,
+          right: 0,
           bottom: 0,
           left: 0
         }
@@ -147,7 +151,7 @@ export default {
           }
         }]
       ]
-      var emailsSubscriptionChart = Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions)
+      var emailsSubscriptionChart = Chartist.Bar('#completedTasksChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions)
 
       // start animation for the Emails Subscription Chart
       md.startAnimationForBarChart(emailsSubscriptionChart)

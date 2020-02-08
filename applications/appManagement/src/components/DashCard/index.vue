@@ -9,7 +9,7 @@
     </div>
     <div class="card-footer">
       <div class="stats">
-        <p><svg-icon :iconClass="footerIcon"/>{{footerContent}}</p>
+        <p><svg-icon :iconClass="footerIcon" class="footer-icon"/>{{footerContent}}</p>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@ export default {
     },
     headIcon: {
       type: String,
-      default: () => 'true'
+      required: true
     },
     footerIcon: {
       type: String,
@@ -76,8 +76,7 @@ export default {
     text-align:center;
     color:#fff;
     .card-icon{
-      font-size: 36px;
-      line-height: 56px;
+      @include text(36px, 56px, #fff);
       width: 56px;
       height: 56px;
     }
@@ -102,9 +101,7 @@ export default {
     text-align: right;
     padding:10px 20px 15px 20px;
     .category{
-      color:#999;
-      font-size: 16px;
-      line-height: 1.6em;
+      @include text(16px, 1.6em, #999);
     }
     .title{
       @include title(1.825em, 1.5em, inherit, 500,'"Roboto", "Helvetica", "Arial", sans-serif' )
@@ -120,9 +117,13 @@ export default {
     padding-top: 10px;
     border-top: 1px solid #eeeeee;
     .stats{
-      @include text(12px, 22px, #999);
+      @include text(12px, 20px, #999);
       display:inline-block;
     }
+  }
+  .footer-icon{
+    font-size:20px;
+    vertical-align: middle;
   }
 }
 
