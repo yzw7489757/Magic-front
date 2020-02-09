@@ -44,6 +44,7 @@ export async function mount(props) {
 }
 
 export async function unmount() {
+  instance.$msg.destory()
   instance.$destroy()
   instance = null
   router = null

@@ -61,7 +61,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .msg-enter-active,
 .msg-leave-active {
   transition: all .5s cubic-bezier(.42, 0, .58, 1);
@@ -115,5 +115,4 @@ export default {
     font-size: 14px;
   }
 }
-
 </style>

@@ -6,11 +6,12 @@
 import fetch from 'isomorphic-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start } from '../../../es';
+
 // import Vue from 'vue';
-import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start } from '../../es';
+// import Framework from './Framework.vue';
 
 import Framework from './Framework';
-// import Framework from './Framework.vue';
 
 // let app = null;
 
@@ -61,7 +62,7 @@ registerMicroApps(
   [
     { name: 'applications', entry: '//localhost:7101', render, activeRule: genActiveRule('/apps') },
     // { name: 'react app', entry: '//localhost:7100', render, activeRule: genActiveRule('/react') },
-    { name: 'performance', entry: '//localhost:7102', render, activeRule: genActiveRule('/performance') },
+    { name: 'performance', entry: '//localhost:7100', render, activeRule: genActiveRule('/performance') },
   ],
   {
     beforeLoad: [

@@ -8,7 +8,7 @@ module.exports = {
     copyConfig.output.jsonpFunction = `webpackJsonp_${name}`;
     return config;
   },
-  devServer: function(configFunction) {
+  devServer(configFunction) {
     return function(proxy, allowedHost) {
       const config = configFunction(proxy, allowedHost);
       config.open = false;

@@ -18,3 +18,5 @@ lib
 package-lock.json
 .eslintcache
 .history
+**/**/dist
+**/**/build

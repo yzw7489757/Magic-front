@@ -20,7 +20,9 @@ export default {
   components: {
     'home-head': () => import('./components/HomeHead.vue'),
     'home-content': () => import('./components/HomeContent.vue')
+  },
+  mounted () {
+    this.$msg.success('aaa')
   }
-
 }
 </script>

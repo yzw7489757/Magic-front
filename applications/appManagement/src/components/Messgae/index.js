@@ -9,7 +9,6 @@
 import Vue from 'vue'
 import Message from './index.vue'
 
-// eslint-disable-next-line prefer-const
 function msg(type, text, callback) {
   let msg
   let duration
@@ -41,7 +40,7 @@ function msg(type, text, callback) {
   })
   const newMessage = new VueMessage()
   const vm = newMessage.$mount()
-  const el = vm.$el
+  var el = vm.$el
   document.body.appendChild(el)
 }
 
@@ -71,7 +70,12 @@ const MESSAGE = {
       success: MESSAGE.success,
       error: MESSAGE.error,
       primary: MESSAGE.primary,
-      warning: MESSAGE.warning
+      warning: MESSAGE.warning,
+      destory: () => {
+        document.querySelectorAll('.y-message').forEach(intance => {
+          intance.remove()
+        })
+      }
     }
   }
 }

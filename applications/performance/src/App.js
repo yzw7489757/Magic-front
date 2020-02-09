@@ -10,7 +10,7 @@ function App() {
   const [visible, setVisible] = useState(false);
 
   return (
-    <Router basename={window.__POWERED_BY_QIANKUN__ ? '/react' : '/'}>
+    <Router basename={window.__POWERED_BY_QIANKUN__ ? '/performance' : '/'}>
       <div className="App">
         <header className="App-header">
           <div style={{ color: 'green' }}>Hello React</div>
