@@ -4,13 +4,14 @@ import React, { lazy, Suspense, useState, version } from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import './App.css';
 
+const IS_PRO = process.env.NODE_ENV === 'production';
 const User = lazy(() => import('./User'));
 
 function App() {
   const [visible, setVisible] = useState(false);
 
   return (
-    <Router basename={window.__POWERED_BY_QIANKUN__ ? '/performance' : '/'}>
+    <Router basename={IS_PRO || window.__POWERED_BY_QIANKUN__ ? process.env.PUBLIC_URL : '/'}>
       <div className="App">
         <header className="App-header">
           <div style={{ color: 'green' }}>Hello React</div>

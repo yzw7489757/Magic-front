@@ -9,17 +9,17 @@ import './utils/captureDOM'
 import '@/components/index'
 import limitRoute from './auth/permission'
 import filter from './filter/index'
-import {name} from '../package.json'
+import { name } from '../package.json'
 
 Vue.config.productionTip = false
 
 Vue.use(filter)
 export let router = null
 let instance = null
-
+const IS_PROD = process.env.NODE_ENV === 'production'
 function render() {
   router = new VueRouter({
-    base: window.__POWERED_BY_QIANKUN__ ? `/${name}` : '/',
+    base: IS_PROD || window.__POWERED_BY_QIANKUN__ ? `/${name}` : '/',
     mode: 'history',
     routes
   })
