@@ -9,6 +9,8 @@ import './utils/captureDOM'
 import '@/components/index'
 import limitRoute from './auth/permission'
 import filter from './filter/index'
+import {name} from '../package.json'
+
 Vue.config.productionTip = false
 
 Vue.use(filter)
@@ -17,7 +19,7 @@ let instance = null
 
 function render() {
   router = new VueRouter({
-    base: window.__POWERED_BY_QIANKUN__ ? '/apps' : '/',
+    base: window.__POWERED_BY_QIANKUN__ ? `/${name}` : '/',
     mode: 'history',
     routes
   })

@@ -8,7 +8,7 @@ import style from './index.less';
 
 const applications = [
   { title: 'home', name: '主页', href: '/' },
-  { title: 'apps', name: '应用管理', href: '/apps' },
+  { title: 'appManagement', name: '应用管理', href: '/appManagement' },
   { title: 'performance', name: '性能监控', href: '/performance' },
 ];
 function useForceUpdate() {
