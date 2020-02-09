@@ -17,7 +17,7 @@
     "install:main": "cd applications/main && yarn",
     "install:performance": "cd applications/performance && yarn",
     "install:appManagement": "cd applications/appManagement && yarn",
-    "build:apps": "npm run build:main && npm run build:performance && npm run build:appManagement",
+    "build:apps": "npm run build:main && npm run build:performance && npm run build:appManagement && node ./ops.js",
     "build:main": "cd applications/main && yarn build",
     "build:performance": "cd applications/performance && yarn build",
     "build:appManagement": "cd applications/appManagement && yarn build",
