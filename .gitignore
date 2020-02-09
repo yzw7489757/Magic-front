@@ -20,3 +20,5 @@ package-lock.json
 .history
 **/**/dist
 **/**/build
+/web
+/magic-front
