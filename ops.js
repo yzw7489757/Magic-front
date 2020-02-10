@@ -4,8 +4,8 @@ const exec = require('child_process').execSync;
 const currentPath = path.resolve(__dirname);
 const appPath = currentPath + '/applications'
 
-// const WEB_PATH = path.resolve(__dirname, 'web') //应用路径
-const WEB_PATH = '/data/www/web/' //应用路径
+// const WEB_PATH = path.resolve(__dirname, 'magic-front') //应用路径
+const WEB_PATH = '/data/www/magic-front/' //应用路径
 
 const mainApp = 'main'
 
