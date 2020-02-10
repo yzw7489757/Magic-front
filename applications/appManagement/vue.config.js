@@ -28,7 +28,7 @@ module.exports = {
   outputDir: 'dist',
   assetsDir: 'static',
   filenameHashing: true,
-  productionSourceMap: false,
+  // productionSourceMap: false,
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   devServer: {
@@ -37,6 +37,8 @@ module.exports = {
     hot: true,
     disableHostCheck: true,
     port,
+    progress: true,
+    noInfo: true,
     overlay: {
       warnings: false,
       errors: true,

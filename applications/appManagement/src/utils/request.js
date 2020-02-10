@@ -17,9 +17,8 @@ const tip = (msg, time = 5) => Message.error({
   text: msg,
   duration: time * 1000
 })
-
 const service = axios.create({
-  baseURL: NOT_PRO ? 'http://127.0.0.1:3000/' : '/api',
+  baseURL: process.env.VUE_APP_REQUEST_URL,
   timeout: 30 * 1000
   // cancelToken: source.token
 })

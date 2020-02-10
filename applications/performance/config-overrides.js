@@ -7,7 +7,9 @@ module.exports = {
     copyConfig.output.library = `${name}-[name]`;
     copyConfig.output.libraryTarget = 'umd';
     // copyConfig.output.path = path.resolve(__dirname, 'dist');
-    copyConfig.output.publicPath = env === 'production' ? `/${name}/` : '/';
+    if (env === 'production') {
+      copyConfig.output.publicPath = `/${name}/`;
+    }
     copyConfig.output.jsonpFunction = `webpackJsonp_${name}`;
     return config;
   },

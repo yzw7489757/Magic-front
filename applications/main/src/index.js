@@ -13,7 +13,7 @@ import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start } fr
 
 import Framework from './Framework';
 
-const IS_PROD = process.env.NODE_ENV === 'production'
+const IS_PROD = process.env.NODE_ENV === 'production';
 // let app = null;
 
 function render({ appContent, loading }) {
@@ -62,7 +62,7 @@ const request = url =>
 
 registerMicroApps(
   [
-    { name: 'applications', entry: IS_PROD ? '/appManagement/' : '//localhost:7101', render, activeRule: genActiveRule('/appManagement') },
+    { name: 'appManagement', entry: IS_PROD ? '/appManagement/' : '//localhost:7101', render, activeRule: genActiveRule('/appManagement') },
     // { name: 'react app', entry: '//localhost:7100', render, activeRule: genActiveRule('/react') },
     { name: 'performance', entry: IS_PROD ? '/performance/' : '//localhost:7100', render, activeRule: genActiveRule('/performance') },
   ],

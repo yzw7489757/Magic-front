@@ -22,7 +22,7 @@ export default {
     'home-content': () => import('./components/HomeContent.vue')
   },
   mounted () {
-    this.$msg.success('aaa')
+    // this.$msg.success('aaa')
   }
 }
 </script>
