@@ -4,10 +4,8 @@ const exec = require('child_process').execSync;
 const currentPath = path.resolve(__dirname);
 const appPath = currentPath + '/applications'
 
-// const OPS_PATH = path.resolve(__dirname, 'magic-front') // 主应用路径
-// const WEB_PATH = path.resolve(__dirname, 'web') //子应用路径
-const OPS_PATH = '/data/www/magic-front' // 主应用路径
-const WEB_PATH = '/data/www/web/' //子应用路径
+// const WEB_PATH = path.resolve(__dirname, 'web') //应用路径
+const WEB_PATH = '/data/www/web/' //应用路径
 
 const mainApp = 'main'
 
@@ -21,9 +19,9 @@ deploySubApp()
 
 function deployMain() {
   // 部署主应用
-  rmDir(OPS_PATH)
-  cpDir(`${appPath}/${mainApp}/dist`, OPS_PATH)
-  rmDir(`${appPath}/${mainApp}/dist`)
+  cleanDirSubFile(WEB_PATH)
+  cpDir(`${appPath}/${mainApp}/dist`, WEB_PATH)
+  // rmDir(`${appPath}/${mainApp}/dist`)
 }
 
 function deploySubApp() {
@@ -56,10 +54,10 @@ function deployApp(appName) {
 
       if (~appDir.indexOf('dist')) {
         cpDir(`${appPath}/${appName}/dist`,`${WEB_PATH}/${appName}`)
-        rmDir(`${appPath}/${appName}/dist`)
+        // rmDir(`${appPath}/${appName}/dist`)
       } else {
         cpDir(`${appPath}/${appName}/build`,`${WEB_PATH}/${appName}`)
-        rmDir(`${appPath}/${appName}/build`)
+        // rmDir(`${appPath}/${appName}/build`)
       }
       resolve()
     } catch (e) {
@@ -81,4 +79,12 @@ function mkDir(path){
 function cpDir(fromPath,toPath) {
   mkDir(toPath)
   exec(`cp -r ${fromPath}/* ${toPath}`)
+}
+
+/**
+ * 清空子文件，不清空文件夹
+ * @param {string} [path]
+ */
+function cleanDirSubFile(path) {
+  exec(`find ${path} -maxdepth 1 -type f | xargs rm -f`)
 }

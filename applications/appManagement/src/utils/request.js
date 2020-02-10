@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Message from '@/components/Messgae/index.js'
 import { router } from '@/main'
-import store from '@/store'
+// import store from '@/store'
 
 const NOT_PRO = process.env.NODE_ENV !== 'production'
 // 重试次数
@@ -19,7 +19,7 @@ const tip = (msg, time = 5) => Message.error({
 })
 
 const service = axios.create({
-  baseURL: 'http://127.0.0.1:3000/',
+  baseURL: NOT_PRO ? 'http://127.0.0.1:3000/' : '/api',
   timeout: 30 * 1000
   // cancelToken: source.token
 })
