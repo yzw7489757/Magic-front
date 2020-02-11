@@ -24,7 +24,7 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: isPROD ? `/${name}/` : '/',
+  publicPath: isPROD ? `/magic-${name}/` : '/',
   outputDir: 'dist',
   assetsDir: 'static',
   filenameHashing: true,
