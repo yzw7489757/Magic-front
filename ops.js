@@ -7,9 +7,9 @@ const exec = require('child_process').execSync;
 const currentPath = path.resolve(__dirname);
 const appPath = `${currentPath}/applications`;
 
-// const WEB_PATH = path.resolve(__dirname, 'magic-front') //应用路径
-const WEB_PATH = '/data/www/magic-front/'; // 应用路径
-
+const WEB_PATH = path.resolve(__dirname, 'magic-front') //应用路径
+// const WEB_PATH = '/data/www/magic-front/'; // 应用路径
+const prefix = 'magic-'
 const mainApp = 'main';
 
 const appDirs = fs.readdirSync(appPath, 'utf8').filter(appDir => appDir !== mainApp);
@@ -22,6 +22,7 @@ deploySubApp();
 
 function deployMain() {
   // 部署主应用
+  mkDir(WEB_PATH)
   cleanSubFile(WEB_PATH);
   cpDir(`${appPath}/${mainApp}/dist`, WEB_PATH);
   rmDir(`${appPath}/${mainApp}/dist`);
@@ -29,13 +30,13 @@ function deployMain() {
 
 function deploySubApp() {
   const queue = appDirs.map(subPath => deployApp(subPath));
-  if (queue.length === 0) exec('echo no Task Running');
+  if (queue.length === 0) return exec('echo no Task Running');
   mkDir(WEB_PATH);
   invokeTask(queue);
 }
 
 function invokeTask(queue) {
-  if (queue.length === 0) exec('Task completed');
+  if (queue.length === 0) return exec('echo Task completed');
   const task = queue.pop();
 
   task().then(async () => {
@@ -54,13 +55,13 @@ function deployApp(appName) {
     try {
       const appDir = fs.readdirSync(`${appPath}/${appName}`, 'utf8');
       // 删掉原有目录
-      rmDir(`${WEB_PATH}/${appName}`);
+      rmDir(`${WEB_PATH}/${prefix}${appName}`);
 
       if (~appDir.indexOf('dist')) {
-        cpDir(`${appPath}/${appName}/dist`, `${WEB_PATH}/${appName}`);
+        cpDir(`${appPath}/${appName}/dist`, `${WEB_PATH}/${prefix}${appName}`);
         rmDir(`${appPath}/${appName}/dist`);
       } else {
-        cpDir(`${appPath}/${appName}/build`, `${WEB_PATH}/${appName}`);
+        cpDir(`${appPath}/${appName}/build`, `${WEB_PATH}/${prefix}${appName}`);
         rmDir(`${appPath}/${appName}/build`);
       }
       resolve();
