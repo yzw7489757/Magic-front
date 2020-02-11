@@ -6,7 +6,7 @@
 import fetch from 'isomorphic-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start } from '../../../es';
+import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start } from 'qiankun';
 
 // import Vue from 'vue';
 // import Framework from './Framework.vue';
@@ -62,9 +62,8 @@ const request = url =>
 
 registerMicroApps(
   [
-    { name: 'appManagement', entry: IS_PROD ? '//magic.yuanziwen.cn/magic-appManagement' : '//localhost:7101', render, activeRule: genActiveRule('/appManagement') },
-    // { name: 'react app', entry: '//localhost:7100', render, activeRule: genActiveRule('/react') },
-    { name: 'performance', entry: IS_PROD ? '//magic.yuanziwen.cn/magic-performance' : '//localhost:7100', render, activeRule: genActiveRule('/performance') },
+    { name: 'apps', entry: IS_PROD ? '//apps.localhost.cn' : '//localhost:7101', render, activeRule: genActiveRule('/apps') },
+    { name: 'performance', entry: IS_PROD ? '//performance.localhost.cn' : '//localhost:7102', render, activeRule: genActiveRule('/performance') },
   ],
   {
     beforeLoad: [

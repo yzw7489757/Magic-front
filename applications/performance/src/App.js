@@ -11,7 +11,7 @@ function App() {
   const [visible, setVisible] = useState(false);
 
   return (
-    <Router basename={IS_PRO || window.__POWERED_BY_QIANKUN__ ? `/magic-${process.npm_package_name}` : '/'}>
+    <Router basename={(IS_PRO && window.__POWERED_BY_QIANKUN__) ? `/${process.env.APP_ROUTER_BASE_URL}` : '/'}>
       <div className="App">
         <header className="App-header">
           <div style={{ color: 'green' }}>Hello React</div>

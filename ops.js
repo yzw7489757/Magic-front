@@ -1,5 +1,3 @@
-/* eslint-disable import/no-dynamic-require */
-
 const fs = require('fs');
 const path = require('path');
 const exec = require('child_process').execSync;
@@ -7,9 +5,8 @@ const exec = require('child_process').execSync;
 const currentPath = path.resolve(__dirname);
 const appPath = `${currentPath}/applications`;
 
-// const WEB_PATH = path.resolve(__dirname, 'magic-front') //应用路径
-const WEB_PATH = '/data/www/magic-front/'; // 应用路径
-const prefix = 'magic-'
+// const WEB_PATH = '/Users/floyd_yzw/Documents'; // 应用路径
+const WEB_PATH = '/data/www/magic-front'; // 应用路径
 const mainApp = 'main';
 
 const appDirs = fs.readdirSync(appPath, 'utf8').filter(appDir => appDir !== mainApp);
@@ -17,21 +14,22 @@ const appDirs = fs.readdirSync(appPath, 'utf8').filter(appDir => appDir !== main
 console.log(`
   This time there is a total of ${appDirs.length} project: \n  ${appDirs.join('\n  ')}
 `);
+
 deployMain();
 deploySubApp();
 
 function deployMain() {
+  const main_ops_path = `${WEB_PATH}/${mainApp}`
   // 部署主应用
-  mkDir(WEB_PATH)
-  cleanSubFile(WEB_PATH);
-  cpDir(`${appPath}/${mainApp}/dist`, WEB_PATH);
+  mkDir(main_ops_path)
+  cleanSubFile(main_ops_path);
+  cpDir(`${appPath}/${mainApp}/dist`, main_ops_path);
   rmDir(`${appPath}/${mainApp}/dist`);
 }
 
 function deploySubApp() {
-  const queue = appDirs.map(subPath => deployApp(subPath));
+  const queue = appDirs.map(deployApp);
   if (queue.length === 0) return exec('echo no Task Running');
-  mkDir(WEB_PATH);
   invokeTask(queue);
 }
 
@@ -50,26 +48,25 @@ function invokeTask(queue) {
 function deployApp(appName) {
   return () => new Promise((resolve, reject) => {
     const { name } = require(`${appPath}/${appName}/package.json`);
-    exec(`echo ${name} deploying...`);
+    console.log(`${name} deploying...`)
 
     try {
       const appDir = fs.readdirSync(`${appPath}/${appName}`, 'utf8');
       // 删掉原有目录
-      rmDir(`${WEB_PATH}/${prefix}${appName}`);
+      rmDir(`${WEB_PATH}/${appName}`);
 
       if (~appDir.indexOf('dist')) {
-        cpDir(`${appPath}/${appName}/dist`, `${WEB_PATH}/${prefix}${appName}`);
+        cpDir(`${appPath}/${appName}/dist`, `${WEB_PATH}/${appName}`);
         rmDir(`${appPath}/${appName}/dist`);
       } else {
-        cpDir(`${appPath}/${appName}/build`, `${WEB_PATH}/${prefix}${appName}`);
+        cpDir(`${appPath}/${appName}/build`, `${WEB_PATH}/${appName}`);
         rmDir(`${appPath}/${appName}/build`);
       }
       resolve();
     } catch (e) {
       reject(e);
     }
-
-    exec(`echo ${name} deploy done`);
+    console.log(`${name} deploy done`)
   });
 }
 

@@ -1,6 +1,7 @@
 {
-  "name": "appManagement",
+  "name": "apps",
   "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
     "start": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
@@ -12,6 +13,7 @@
     "axios": "^0.19.1",
     "chartist": "^0.11.4",
     "core-js": "^3.3.2",
+    "mobile-detect": "^1.4.4",
     "nprogress": "^0.2.0",
     "vue": "^2.6.10",
     "vue-fullscreen": "^2.1.5",

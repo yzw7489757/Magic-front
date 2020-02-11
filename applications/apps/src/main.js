@@ -12,14 +12,14 @@ import filter from './filter/index'
 import { name } from '../package.json'
 
 Vue.config.productionTip = false
-
+console.log(process.env)
 Vue.use(filter)
 export let router = null
 let instance = null
 const IS_PROD = process.env.NODE_ENV === 'production'
 function render() {
   router = new VueRouter({
-    base: IS_PROD || window.__POWERED_BY_QIANKUN__ ? `/${name}` : '/',
+    base: IS_PROD && window.__POWERED_BY_QIANKUN__ ? `/${name}` : '/',
     mode: 'history',
     routes
   })

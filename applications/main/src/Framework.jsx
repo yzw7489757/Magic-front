@@ -8,9 +8,10 @@ import style from './index.less';
 
 const applications = [
   { title: 'home', name: '主页', href: '/' },
-  { title: 'appManagement', name: '应用管理', href: '/appManagement' },
+  { title: 'apps', name: '应用管理', href: '/apps' },
   { title: 'performance', name: '性能监控', href: '/performance' },
 ];
+
 function useForceUpdate() {
   const [, forceUpdate] = React.useState(0);
   return () => {
