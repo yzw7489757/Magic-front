@@ -9,9 +9,8 @@ const User = lazy(() => import('./User'));
 
 function App() {
   const [visible, setVisible] = useState(false);
-
   return (
-    <Router basename={(IS_PRO && window.__POWERED_BY_QIANKUN__) ? `/${process.env.APP_ROUTER_BASE_URL}` : '/'}>
+    <Router basename={(IS_PRO && window.__POWERED_BY_QIANKUN__) ? `${process.env.REACT_APP_ROUTER_BASE_URL}` : '/'}>
       <div className="App">
         <header className="App-header">
           <div style={{ color: 'green' }}>Hello React</div>
