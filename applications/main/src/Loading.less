@@ -1,0 +1,72 @@
+
+@defaultColor:#FF8460;
+@size:14px;
+@right:10018px;
+@left:9980px;
+@center:9999px;
+
+
+.loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom:0;
+  right:0;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, .7);
+  overflow: hidden;
+  text-align: center;
+  &_box {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#d5d5d5;
+  }
+  &_text{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 5em;
+    text-align: left;
+    font: normal 400 14px/20px -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    color: #666;
+    &::after{
+      content: " ";
+      animation: dots 3s ease infinite;
+    }
+    @keyframes dots {
+      0%{content: '.';}
+      20%{content: '..';}
+      40%{content: '...';}
+      60%{content: '....';}
+      80%{content: '.....';}
+      100%{content: '......'}
+    }
+  }
+  &_dot {
+    position: relative;
+    left: -@center+1px;
+    width: @size;
+    height: @size;
+    border-radius: @size/2;
+    background-color: @defaultColor;
+    box-shadow: @left 0 0 0 @defaultColor, @center 0 0 0 @defaultColor, @right 0 0 0 @defaultColor;
+    animation: dotCarousel 1.5s infinite linear;
+  }
+}
+
+
+@keyframes dotCarousel {
+  0% {
+    box-shadow: @left 0 0 -1px @defaultColor, @center 0 0 1px @defaultColor, @right 0 0 -1px @defaultColor;
+  }
+  50% {
+    box-shadow: @right 0 0 -1px @defaultColor, @left 0 0 -1px @defaultColor, @center 0 0 1px @defaultColor;
+  }
+  100% {
+    box-shadow: @center 0 0 1px @defaultColor, @right 0 0 -1px @defaultColor, @left 0 0 -1px @defaultColor;
+  }
+}

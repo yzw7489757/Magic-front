@@ -5,6 +5,7 @@
 
 import React from 'react';
 import style from './index.less';
+import Loading from './Loading';
 
 const applications = [
   { title: 'home', name: '主页', href: '/' },
@@ -53,8 +54,10 @@ export default function Framework(props) {
           </ul>
         </nav>
       </header>
-      {loading ? <div>loading...</div> : null}
-      <div dangerouslySetInnerHTML={{ __html: content }} className={style.appContainer}/>
+      <main className={style.main}>
+        <Loading loading={loading} />
+        <div dangerouslySetInnerHTML={{ __html: content }} className={style.appContainer}/>
+      </main>
     </>
 
   );

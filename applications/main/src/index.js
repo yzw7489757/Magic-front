@@ -1,7 +1,9 @@
 /**
- * @author Kuitos
- * @since 2019-05-16
- */
+* @description 主应用
+* @author YuanZiWen
+* @since 2019-12-16
+*/
+
 
 import fetch from 'isomorphic-fetch';
 import React from 'react';
