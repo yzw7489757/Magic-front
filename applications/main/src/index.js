@@ -62,8 +62,8 @@ const request = url =>
 
 registerMicroApps(
   [
-    { name: 'apps', entry: IS_PROD ? '//apps.localhost.cn' : '//localhost:7101', render, activeRule: genActiveRule('/apps') },
-    { name: 'performance', entry: IS_PROD ? '//performance.localhost.cn' : '//localhost:7102', render, activeRule: genActiveRule('/performance') },
+    { name: 'apps', entry: IS_PROD ? '//apps.yuanziwen.cn' : '//localhost:7101', render, activeRule: genActiveRule('/apps') },
+    { name: 'performance', entry: IS_PROD ? '//performance.yuanziwen.cn' : '//localhost:7102', render, activeRule: genActiveRule('/performance') },
   ],
   {
     beforeLoad: [
