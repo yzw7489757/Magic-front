@@ -5,8 +5,8 @@ const exec = require('child_process').execSync;
 const currentPath = path.resolve(__dirname);
 const appPath = `${currentPath}/applications`;
 
-const WEB_PATH = '/Users/floyd_yzw/Documents'; // 应用路径
-// const WEB_PATH = '/data/www/magic-front'; // 应用路径
+// const WEB_PATH = '/Users/floyd_yzw/Documents'; // 应用路径
+const WEB_PATH = '/data/www/magic-front'; // 应用路径
 const mainApp = 'main';
 
 const appDirs = fs.readdirSync(appPath, 'utf8').filter(appDir => appDir !== mainApp);
