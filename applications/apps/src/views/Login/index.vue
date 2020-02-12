@@ -1,6 +1,6 @@
 <template>
   <div>
-      <canvas class="login-container" ref="container" />
+      <!-- <canvas class="login-container" ref="container" /> -->
       <y-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="user-ruleForm">
         <y-form-item label="" prop="userName" :identification="false">
           <y-input v-model="ruleForm.userName" placeholder="username..."></y-input>
@@ -13,7 +13,6 @@
         </y-form-item>
       </y-form>
   </div>
-
 </template>
 
 <script>
