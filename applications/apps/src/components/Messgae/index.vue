@@ -42,7 +42,7 @@ export default {
   methods: {
     handleAfterLeave() {
       this.$destroy(true)
-      this.$el.parentNode.removeChild(this.$el)
+      this.$el.parentNode&&this.$el.parentNode.removeChild(this.$el)
     },
     clearTimer() {
       clearTimeout(this.timeout)

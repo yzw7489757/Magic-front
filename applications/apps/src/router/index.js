@@ -1,14 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Layout from '@/views/Layout/index'
+import Layout from '@/views/Layout'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/',
+    redirect: '/login',
+    hidden: true
+  },
+  {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/Login/index'),
+    component: () => import('@/views/Login'),
     hidden: true
   },
   {
@@ -19,7 +24,7 @@ const routes = [
       {
         path: 'home',
         name: 'home',
-        component: () => import('@/views/Home/index'),
+        component: () => import('@/views/Home'),
         meta: {
           title: '主页'
         }
@@ -68,14 +73,9 @@ const routes = [
         meta: {
           title: '404'
         },
-        component: () => import('@/views/NotFound/index')
+        component: () => import('@/views/NotFound')
       }
     ]
-  },
-  {
-    path: '/',
-    redirect: '/views/home',
-    hidden: true
   },
   {
     path: '*',
@@ -83,7 +83,7 @@ const routes = [
     meta: {
       title: '404'
     },
-    component: () => import('@/views/NotFound/index')
+    component: () => import('@/views/NotFound')
   }
 ]
 

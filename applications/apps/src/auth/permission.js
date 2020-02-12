@@ -2,7 +2,7 @@ import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css' // Progress 进度条样式
 import Message from '@/components/Messgae/index.js'
 import { getToken, removeToken, removeUserInfo, getUserInfo } from '@/utils/auth.js'
-
+import Vue from 'vue'
 const whiteList = ['/login', '/404']
 
 const limitRoute = router => {
@@ -12,7 +12,7 @@ const limitRoute = router => {
       // determine if there has token
       /* has token */
       if (to.path === '/login') {
-        next({ path: '/home' })
+        next({ name: 'home' })
       } else {
         next()
       }
@@ -28,7 +28,7 @@ const limitRoute = router => {
         })
         removeToken()
         removeUserInfo()
-        next('/login') // 否则全部重定向到登录测试页
+        next({ name: 'login', query: { from: router.history.pending.fullPath } }) // 重定向到登录页
         NProgress.done() // if current page is login will not trigger afterEach hook, so manually handle it
       }
     }

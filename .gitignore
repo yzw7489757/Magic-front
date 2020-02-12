@@ -13,12 +13,8 @@ config.local.js
 .idea/
 .cache
 yarn.lock
-es
-lib
 package-lock.json
-.eslintcache
 .history
 **/**/dist
 **/**/build
-/web
 /magic-front

@@ -6,12 +6,7 @@
 import React from 'react';
 import style from './index.less';
 import Loading from './Loading';
-
-const applications = [
-  { title: 'home', name: '主页', href: '/' },
-  { title: 'apps', name: '应用管理', href: '/apps' },
-  { title: 'performance', name: '性能监控', href: '/performance' },
-];
+import { colonyList } from '../../../apps.json';
 
 function useForceUpdate() {
   const [, forceUpdate] = React.useState(0);
@@ -22,6 +17,7 @@ function useForceUpdate() {
 export default function Framework(props) {
   const { content, loading } = props;
   const forceUpdate = useForceUpdate();
+  
   function goto(title, href) {
     window.history.pushState({}, title, href);
     forceUpdate();
@@ -43,11 +39,11 @@ export default function Framework(props) {
           <div className={style.header_title}>Magic</div>
           <ul className={style.header_navList}>
             {
-              applications.map(app => (
+              colonyList.map(app => (
               <li
-                key={app.href}
-                className={`${style.navItem} ${switchPath(app.href)}`}>
-                 <a onClick={() => goto(app.title, app.href)}>{app.name}</a>
+                key={app.prefix}
+                className={`${style.navItem} ${switchPath(app.prefix)}`}>
+                 <a onClick={() => goto(app.title, app.prefix)}>{app.name}</a>
               </li>
               ))
             }

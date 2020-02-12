@@ -40,7 +40,6 @@ export default {
     }
   },
   methods: {
-
     submitForm() {
       return new Promise((resolve, reject) => {
         this.$refs.ruleForm.validate((valid) => {
@@ -63,7 +62,7 @@ export default {
           text: '登录成功',
           duration: 2000
         }, () => {
-          this.$router.replace('/')
+          this.$router.replace({ path:this.$route.query.from })
         })
       } catch (e) {
         this.$msg.error({
@@ -77,7 +76,7 @@ export default {
     }
   },
   mounted() {
-    // this.generatorBackground()
+    // this.$msg.info('aaa')
   }
 }
 </script>
