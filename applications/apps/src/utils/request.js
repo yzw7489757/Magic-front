@@ -3,6 +3,8 @@ import Message from '@/components/Messgae/index.js'
 import { router } from '@/main'
 // import store from '@/store'
 
+const protocol = process.env.VUE_APP_PROTOCOL
+const baseUrl = process.env.VUE_APP_REQUEST_URL
 const NOT_PRO = process.env.NODE_ENV !== 'production'
 // 重试次数
 axios.defaults.retry = 1
@@ -17,8 +19,9 @@ const tip = (msg, time = 5) => Message.error({
   text: msg,
   duration: time * 1000
 })
+
 const service = axios.create({
-  baseURL: process.env.VUE_APP_REQUEST_URL,
+  baseURL: `${protocol}://${baseUrl}`,
   timeout: 30 * 1000
   // cancelToken: source.token
 })

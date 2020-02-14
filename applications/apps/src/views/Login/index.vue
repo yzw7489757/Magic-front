@@ -61,7 +61,11 @@ export default {
           text: '登录成功',
           duration: 2000
         }, () => {
-          this.$router.replace({ path:this.$route.query.from })
+          if(this.$route.query.from){
+            this.$router.replace({ path:this.$route.query.from })
+          }else{
+            this.$router.replace({ name: 'home' })
+          }
         })
       } catch (e) {
         this.$msg.error({

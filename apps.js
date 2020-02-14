@@ -1,5 +1,5 @@
-{
-  "colonyList": [
+module.exports = {
+  colonyList: [
     {
       "name": "应用管理",
       "title": "apps",
@@ -15,5 +15,8 @@
       "onlineUrl":"//performance.yuanziwen.cn"
     }
   ],
-  "defaultApp": "/apps"
+  defaultApp: "/apps",
+  mainApp: "main",
+  // webPath:'/Users/floyd_yzw/Documents',
+  webPath:'/data/www/magic-front',
 }

@@ -6,7 +6,7 @@
 import React from 'react';
 import style from './index.less';
 import Loading from './Loading';
-import { colonyList } from '../../../apps.json';
+import { colonyList } from '../../../apps';
 
 function useForceUpdate() {
   const [, forceUpdate] = React.useState(0);

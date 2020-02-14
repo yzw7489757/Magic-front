@@ -9,7 +9,7 @@ import fetch from 'isomorphic-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start } from 'qiankun';
-import { colonyList, defaultApp } from '../../../apps.json';
+import { colonyList, defaultApp } from '../../../apps.js';
 
 // import Vue from 'vue';
 // import Framework from './Framework.vue';

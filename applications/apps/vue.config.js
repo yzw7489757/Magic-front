@@ -2,6 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const { name } = require('./package');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const isPROD = process.env.NODE_ENV === 'production';
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
@@ -10,11 +11,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const productionGzipExtensions = ['js', 'css'];
 
+const port = 7101; // dev port
+const protocol = process.env.VUE_APP_PROTOCOL
+const address = isPROD ? process.env.VUE_APP_DOMAIN : `localhost:${port}`
+
 function resolve(dir) {
   return path.join(__dirname, dir);
 }
-
-const port = 7101; // dev port
 
 module.exports = {
   /**
@@ -24,7 +27,7 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  // publicPath: isPROD ? `/${name}/` : '/',
+  // devtool: false,
   outputDir: 'dist',
   assetsDir: 'static',
   filenameHashing: true,
@@ -59,6 +62,7 @@ module.exports = {
   },
   // 自定义webpack配置
   configureWebpack: {
+    devtool:false,
     resolve: {
       alias: {
         '@': resolve('src'),
@@ -84,6 +88,20 @@ module.exports = {
           threshold: 10240,
           minRatio: 0.8,
         }),
+        isPROD && new webpack.SourceMapDevToolPlugin({
+          filename: '[file].map',
+          publicPath: `${protocol}://${address}/`,
+          moduleFilenameTemplate: '[resource-path]',
+          // append: `\n//# sourceMappingURL=${protocol}://${address}/[url]`
+        }),
     ].filter(Boolean),
+    optimization: {
+      minimize: true,
+      minimizer: [
+          new UglifyJsPlugin({
+              sourceMap: true,
+          }),
+      ],
+  },
   },
 };

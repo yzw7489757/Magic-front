@@ -1,13 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const exec = require('child_process').execSync;
+const { mainApp, webPath } = require('./apps');
 
 const currentPath = path.resolve(__dirname);
 const appPath = `${currentPath}/applications`;
-
-// const WEB_PATH = '/Users/floyd_yzw/Documents'; // 应用路径
-const WEB_PATH = '/data/www/magic-front'; // 应用路径
-const mainApp = 'main';
 
 const appDirs = fs.readdirSync(appPath, 'utf8').filter(appDir => appDir !== mainApp);
 
@@ -20,7 +17,7 @@ deploySubApp();
 
 function deployMain() {
   // 部署主应用
-  const main_ops_path = `${WEB_PATH}/${mainApp}`
+  const main_ops_path = `${webPath}/${mainApp}`
   mkDir(main_ops_path)
   cleanSubFile(main_ops_path);
   cpDir(`${appPath}/${mainApp}/dist`, main_ops_path);
@@ -53,13 +50,13 @@ function deployApp(appName) {
     try {
       const appDir = fs.readdirSync(`${appPath}/${appName}`, 'utf8');
       // 删掉原有目录
-      rmDir(`${WEB_PATH}/${appName}`);
+      rmDir(`${webPath}/${appName}`);
 
       if (~appDir.indexOf('dist')) {
-        cpDir(`${appPath}/${appName}/dist`, `${WEB_PATH}/${appName}`);
+        cpDir(`${appPath}/${appName}/dist`, `${webPath}/${appName}`);
         rmDir(`${appPath}/${appName}/dist`);
       } else {
-        cpDir(`${appPath}/${appName}/build`, `${WEB_PATH}/${appName}`);
+        cpDir(`${appPath}/${appName}/build`, `${webPath}/${appName}`);
         rmDir(`${appPath}/${appName}/build`);
       }
       resolve();
