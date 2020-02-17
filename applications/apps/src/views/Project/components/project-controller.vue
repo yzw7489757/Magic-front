@@ -61,7 +61,8 @@ export default {
       ],
       projectInfo: {
         projectName: '', // 项目名称
-        platform: '' // 项目运行环境
+        platform: '', // 项目运行环境
+        running: '0'
       },
 
       projectRule: {

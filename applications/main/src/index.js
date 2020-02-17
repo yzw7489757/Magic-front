@@ -70,17 +70,17 @@ registerMicroApps(
   {
     beforeLoad: [
       app => {
-        console.log('before load', app);
+        // console.log('before load', app);
       },
     ],
     beforeMount: [
       app => {
-        console.log('before mount', app);
+        // console.log('before mount', app);
       },
     ],
     afterUnmount: [
       app => {
-        console.log('after unload', app);
+        // console.log('after unload', app);
       },
     ],
   },
@@ -90,6 +90,8 @@ registerMicroApps(
 );
 
 setDefaultMountApp(defaultApp);
-runAfterFirstMounted(() => console.info('first app mounted'));
+runAfterFirstMounted(() => {
+  // console.info('first app mounted')
+});
 
 start({ prefetch: true, fetch: request });
