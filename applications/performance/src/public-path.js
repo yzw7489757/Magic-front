@@ -1,7 +1,6 @@
 const IS_PROD = process.env.NODE_ENV === 'production'
 const protocol = process.env.REACT_APP_PROTOCOL
 const domain = process.env.REACT_APP_DOMAIN
-import { name } from '../package.json'
 
 if (window.__POWERED_BY_QIANKUN__) {
   if (IS_PROD) {
