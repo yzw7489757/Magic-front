@@ -12,7 +12,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const productionGzipExtensions = ['js', 'css'];
 
 const port = 7101; // dev port
-const protocol = process.env.VUE_APP_PROTOCOL
 const address = isPROD ? process.env.VUE_APP_DOMAIN : `localhost:${port}`
 
 function resolve(dir) {
@@ -90,7 +89,7 @@ module.exports = {
         }),
         isPROD && new webpack.SourceMapDevToolPlugin({
           filename: '[file].map',
-          publicPath: `${protocol}://${address}/`,
+          publicPath: `//${address}/`,
           moduleFilenameTemplate: '[resource-path]',
           // append: `\n//# sourceMappingURL=${protocol}://${address}/[url]`
         }),

@@ -14,23 +14,19 @@
     "install:main": "cd applications/main && yarn",
     "install:performance": "cd applications/performance && yarn",
     "install:apps": "cd applications/apps && yarn",
-
     "build": "npm run build:main && npm run build:performance && npm run build:apps  && npm run ops",
     "build:main": "cd applications/main && yarn build",
     "build:performance": "cd applications/performance && yarn build",
     "build:apps": "cd applications/apps && yarn build",
-
     "stage": "npm run stage:main && npm run stage:performance && npm run stage:apps  && npm run ops",
     "stage:main": "cd applications/main && yarn build",
     "stage:performance": "cd applications/performance && yarn stage",
     "stage:apps": "cd applications/apps && yarn stage",
-
     "start": "concurrently \"yarn start:main\" \"yarn start:performance\" \"yarn start:apps\"",
     "start:main": "cd applications/main && yarn start",
     "start:performance": "cd applications/performance && yarn start",
     "start:apps": "cd applications/apps && yarn start",
-    
-    "ops":"node ./deploy.js",
+    "ops": "node ./deploy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -67,5 +63,6 @@
       "yarn lint:fix",
       "git add"
     ]
-  }
+  },
+  "__npminstall_done": false
 }
