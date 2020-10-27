@@ -8,11 +8,11 @@ module.exports = {
       "onlineUrl":"//apps.yuanziwen.cn"
     },
     {
-      "name": "性能监控",
-      "title": "performance",
-      "prefix": "/performance",
+      "name": "REACT APP",
+      "title": "reactApp",
+      "prefix": "/reactApp",
       "devUrl": "//localhost:7102",
-      "onlineUrl":"//performance.yuanziwen.cn"
+      "onlineUrl":"//reactApp.yuanziwen.cn"
     }
   ],
   defaultApp: "/apps",

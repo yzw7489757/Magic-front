@@ -175,7 +175,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
 .modal-vue {
   &-wrapper {
     position: absolute;

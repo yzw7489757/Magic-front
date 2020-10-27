@@ -5,7 +5,7 @@
     <div class="y-form-item-validate" :class="activeClass">
       <slot></slot>
       <div class="y-form-item-message" v-if="hasError">
-        <svg-icon icon-class="error" class="error-icon"></svg-icon>{{validateMessage}}
+        <svg-icon icon-class="error" class="error-icon"></svg-icon> {{validateMessage}}
       </div>
     </div>
   </div>

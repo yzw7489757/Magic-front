@@ -68,7 +68,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="less">
 .chart-wrap {
   margin-bottom: 15px;
   background: #fff;

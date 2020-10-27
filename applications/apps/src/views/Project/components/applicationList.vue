@@ -21,10 +21,10 @@
             <td>{{item.creator}}</td>
             <td>
                 <y-swtich
-                :value="item.running"
-                @onChange="(status)=>$emit('onChange',item,status)"
-                open-text="启用"
-                close-text="停用" />
+                  :value="item.running"
+                  @onChange="(status) => $emit('onChange', item,status)"
+                  open-text="启用"
+                  close-text="停用" />
             </td>
             <td>
                 <y-button @click="$router.push({name:'projectDetail',params:{id:item.id}})">管理</y-button>
@@ -55,7 +55,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .project-list{
   width: 100%;
   overflow-x: auto;
@@ -64,6 +64,9 @@ export default {
   background-color: transparent;
   font-family: Roboto,Helvetica,Arial,sans-serif;
   font-weight: 300;
+  .card-title {
+    color: #fff;
+  }
   &>thead{
     color: #9c27b0;
     font-size: 16px;
@@ -74,18 +77,18 @@ export default {
     }
   }
   &>tbody{
-      tr{
-        position: relative;
-        font-size:14px;
-        td{
-          line-height: 1.5em;
-          box-sizing:content-box;
-          padding: 12px 8px;
-          vertical-align: middle;
-          border-color: #ddd;
-          border-top: 1px solid rgba(0,0,0,.06);
-        }
+    tr{
+      position: relative;
+      font-size:14px;
+      td{
+        line-height: 1.5em;
+        box-sizing:content-box;
+        padding: 12px 8px;
+        vertical-align: middle;
+        border-color: #ddd;
+        border-top: 1px solid rgba(0,0,0,.06);
       }
+    }
   }
 }
 </style>

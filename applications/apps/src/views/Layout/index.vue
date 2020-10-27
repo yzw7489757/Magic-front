@@ -31,11 +31,11 @@ export default {
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="less" scoped>
 
-@import "src/style/mixin.scss";
+@import "src/style/mixin.less";
 .app-wrapper {
-  @include clearfix;
+  .clearfix;
   position: relative;
   height: 100%;
   width: 100%;

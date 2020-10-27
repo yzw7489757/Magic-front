@@ -56,8 +56,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import "~@/style/mixin.scss";
+<style lang="less" scoped>
+@import "~@/style/mixin.less";
 
 .card{
   display: inline-block;
@@ -76,7 +76,7 @@ export default {
     text-align:center;
     color:#fff;
     .card-icon{
-      @include text(36px, 56px, #fff);
+      .text(36px, 56px, #fff);
       width: 56px;
       height: 56px;
     }
@@ -101,14 +101,14 @@ export default {
     text-align: right;
     padding:10px 20px 15px 20px;
     .category{
-      @include text(16px, 1.6em, #999);
+      .text(16px, 1.6em, #999);
     }
     .title{
-      @include title(1.825em, 1.5em, inherit, 500,'"Roboto", "Helvetica", "Arial", sans-serif' )
+      .title(1.825em, 1.5em, inherit, 500,'"Roboto", "Helvetica", "Arial", sans-serif' );
       min-height: 32px;
       white-space: nowrap;
       small{
-        @include text(65%, 1, #777, 400);
+        .text(65%, 1, #777, 400);
       }
     }
   }
@@ -117,7 +117,7 @@ export default {
     padding-top: 10px;
     border-top: 1px solid #eeeeee;
     .stats{
-      @include text(12px, 20px, #999);
+      .text(12px, 20px, #999);
       display:inline-block;
     }
   }

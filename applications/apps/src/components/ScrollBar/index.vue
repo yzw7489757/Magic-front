@@ -44,7 +44,7 @@ export default {
 
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="less" scoped>
 
 .scroll-container {
   position: relative;

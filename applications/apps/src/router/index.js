@@ -17,6 +17,12 @@ const routes = [
     hidden: true
   },
   {
+    path: '/register',
+    name: 'register',
+    component: () => import('@/views/Register'),
+    hidden: true
+  },
+  {
     path: '/views',
     component: Layout,
     notGroup: true,

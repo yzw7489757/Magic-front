@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .bedge{
   &-wrap{
     vertical-align: middle;
@@ -39,8 +39,8 @@ export default {
     background-color: #1890ff;
     &::after{
       position: absolute;
-      top: -1px;
-      left: -1px;
+      // top: -1px;
+      // left: -1px;
       width: 100%;
       height: 100%;
       border: 1px solid #1890ff;

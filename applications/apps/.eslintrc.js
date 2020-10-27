@@ -23,6 +23,7 @@ module.exports = {
     'handle-callback-err': 0,
     camelcase: 0,
     'no-undef': 1,
+    "eslint-plugin-vue":0,
     'prefer-promise-reject-errors':0
   },
 };

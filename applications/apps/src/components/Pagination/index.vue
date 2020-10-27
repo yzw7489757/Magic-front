@@ -259,7 +259,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="less">
 .y-pagination{
   display: inline-block;
   padding-left: 0;

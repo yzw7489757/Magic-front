@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Message from '@/components/Messgae/index.js'
 import { router } from '@/main'
+import get from 'lodash/get'
 // import store from '@/store'
 
 const baseUrl = process.env.VUE_APP_REQUEST_URL
@@ -50,12 +51,13 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   response => {
-    const { code, data, message = '' } = response.data
+    const { code, data, message = '', error } = response.data
     if (code === 401) {
       reLogin()
       return Promise.reject(message)
     } else if (code !== 200) {
-      NOT_PRO && tip(message)
+      tip(error || message)
+      return Promise.resolve({ ...data, error: null })
     } else {
       return Promise.resolve(data)
     }

@@ -59,27 +59,36 @@ module.exports = {
     //   },
     // }
   },
+  css: {
+    loaderOptions: {
+      less: {
+        lessOptions: {
+          javascriptEnabled: true
+        }
+      }
+    }
+  },
   // 自定义webpack配置
-  configureWebpack: {
-    devtool:false,
-    resolve: {
-      alias: {
-        '@': resolve('src'),
-      },
-    },
-    output: {
-      // 把子应用打包成 umd 库格式
-      library: `${name}-[name]`,
-      libraryTarget: 'umd',
-      jsonpFunction: `webpackJsonp_${name}`,
-    },
-    plugins: [
-      isPROD &&
+  configureWebpack: (config) => {
+    // const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+    // types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
+    config.devtool = false;
+    config.resolve.alias['@'] = resolve('src');
+    config.output.library= `${name}-[name]`;
+    config.output.libraryTarget= 'umd';
+    config.output.jsonpFunction= `webpackJsonp_${name}`;
+    config.optimization.minimize = true
+    // config.optimization.minimizer = [
+    //   new UglifyJsPlugin({
+    //       sourceMap: true,
+    //   })
+    // ]
+    if(isPROD) {
+      config.plugins.push(
         new MiniCssExtractPlugin({
           filename: 'css/[name].[contenthash].css',
         }),
-      isPROD && new OptimizeCSSAssetsPlugin(),
-      isPROD &&
+        new OptimizeCSSAssetsPlugin(),
         new CompressionWebpackPlugin({
           filename: '[path].gz[query]',
           algorithm: 'gzip',
@@ -87,20 +96,13 @@ module.exports = {
           threshold: 10240,
           minRatio: 0.8,
         }),
-        isPROD && new webpack.SourceMapDevToolPlugin({
+        new webpack.SourceMapDevToolPlugin({
           filename: '[file].map',
           publicPath: `//${address}/`,
           moduleFilenameTemplate: '[resource-path]',
           // append: `\n//# sourceMappingURL=${protocol}://${address}/[url]`
-        }),
-    ].filter(Boolean),
-    optimization: {
-      minimize: true,
-      minimizer: [
-          new UglifyJsPlugin({
-              sourceMap: true,
-          }),
-      ],
-  },
-  },
+        })
+      )
+    }
+  }
 };

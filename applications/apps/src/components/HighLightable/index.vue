@@ -87,7 +87,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .tools {
   height: 30px;
   padding: 5px 10px;

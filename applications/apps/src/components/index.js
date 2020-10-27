@@ -8,7 +8,7 @@ import Button from '@/components/Button'
 import Select from '@/components/Select'
 import Pagination from '@/components/Pagination'
 import Swtich from '@/components/Swtich'
-import Message from '@/components/Messgae/index.js'
+import Message from '@/components/Message/index.js'
 
 Vue.use(Message)
 

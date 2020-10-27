@@ -1,0 +1,97 @@
+/**
+* @description css Media(min) => all:col (?-hide) 577:.col-xm (?-hide) 769:.col-md (?-hide) 993:.col-lg (?-hide) 1201:.col-xl (?-hide)
+* @author YuanZiWen
+* @since 19/06/17
+*/
+
+
+@media (max-width: 576px) {
+  .col-hide {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .col-xm-hide {
+    display: none !important;
+  }
+}
+@media (max-width: 993px) {
+  .col-md-hide {
+    display: none !important;
+  }
+}
+
+@class-prefix: col-;
+@class-hide-prefix: offset-;
+each(range(24), {
+  &.@{class-prefix}@{value} {
+    float: left;
+    width: (@value / 24) * 100%;
+  }
+  &.@{class-hide-prefix}@{value} {
+    float: left;
+    margin-left: (@value / 24) * 100%;
+  }
+});
+
+@media (min-width: 577px) {
+  // 577-769
+  @class-prefix: col-xm-;
+  @class-hide-prefix: offset-xm-;
+  each(range(24), {
+    &.@{class-prefix}@{value} {
+      float: left;
+      width: (@value / 24) * 100%;
+    }
+    &.@{class-hide-prefix}@{value} {
+      float: left;
+      margin-left: (@value / 24) * 100%;
+    }
+  });
+}
+@media (min-width: 769px) {
+  // 770-993
+  @class-prefix: col-md-;
+  @class-prefix: offset-md-;
+  each(range(24), {
+    &.@{class-prefix}@{value} {
+      float: left;
+      width: (@value / 24) * 100%;
+    }
+    &.@{class-hide-prefix}@{value} {
+      float: left;
+      margin-left: (@value / 24) * 100%;
+    }
+  });
+}
+
+@media (min-width: 993px) {
+  //993-1200
+  @class-prefix: col-lg-;
+  @class-hide-prefix: offset-lg-;
+  each(range(24), {
+    &.@{class-prefix}@{value} {
+      float: left;
+      width: (@value / 24) * 100%;
+    }
+    &.@{class-hide-prefix}@{value} {
+      float: left;
+      margin-left: (@value / 24) * 100%;
+    }
+  });
+}
+@media (min-width: 1201px) {
+  //1200 - 无限大
+  @class-prefix: col-xl-;
+  @class-prefix: offset-xl-;
+  each(range(24), {
+    &.@{class-prefix}@{value} {
+      float: left;
+      width: (@value / 24) * 100%;
+    }
+    &.@{class-hide-prefix}@{value} {
+      float: left;
+      margin-left: (@value / 24) * 100%;
+    }
+  });
+}

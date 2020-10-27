@@ -61,7 +61,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
+@import "~@/style/variables.less";
+
 .msg-enter-active,
 .msg-leave-active {
   transition: all .5s cubic-bezier(.42, 0, .58, 1);
@@ -93,19 +95,19 @@ export default {
   }
   &.success {
     box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(76,175,80,.4);
-    background-color: #55b559;
+    background-color: @success-color;
   }
   &.error {
     box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(244,67,54,.4);
-    background-color: #f55145;
+    background-color: @error-color;
   }
   &.warning {
     box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(255,152,0,.4);
-    background-color: #ff9e0f;
+    background-color: @warning-color;
   }
   &.primary {
     box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(156,39,176,.4);
-    background-color: #a72abd;
+    background-color: @primary-color;
   }
   .close{
     position: absolute;

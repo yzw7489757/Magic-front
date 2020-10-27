@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header" v-if="tableName||describe">
-      <h4 class="card-title">{{tableName}}</h4>
+      <h3 class="card-title">{{tableName}}</h3>
       <div class="card-category">{{describe}}</div>
     </div>
     <div class="card-body">
@@ -26,7 +26,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less">
+@import "~@/style/mixin.less";
+
 .card{
   position: relative;
   display: flex;
@@ -52,10 +54,9 @@ export default {
     color: #fff;
   }
   &-title{
+    .text(16px, 1.5em, white);
     margin-bottom: 3px;
     text-decoration: none;
-    line-height: 1.4em;
-    font-family: Roboto,Helvetica,Arial,sans-serif;
   }
   &-category{
     color: hsla(0,0%,100%,.8);

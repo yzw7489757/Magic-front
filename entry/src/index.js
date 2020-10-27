@@ -9,7 +9,7 @@ import fetch from 'isomorphic-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start } from 'qiankun';
-import { colonyList, defaultApp } from '../../../apps.js';
+import { colonyList, defaultApp } from '../../apps';
 
 // import Vue from 'vue';
 // import Framework from './Framework.vue';
@@ -54,7 +54,7 @@ function genActiveRule(routerPrefix) {
   return location => location.pathname.startsWith(routerPrefix);
 }
 
-render({ loading: !IS_PROD });
+render({ loading: true });
 
 // support custom fetch see: https://github.com/kuitos/import-html-entry/blob/91d542e936a74408c6c8cd1c9eebc5a9f83a8dc0/src/index.js#L163
 const request = url =>
@@ -70,17 +70,17 @@ registerMicroApps(
   {
     beforeLoad: [
       app => {
-        // console.log('before load', app);
+        console.log('before load', app);
       },
     ],
     beforeMount: [
       app => {
-        // console.log('before mount', app);
+        console.log('before mount', app);
       },
     ],
     afterUnmount: [
       app => {
-        // console.log('after unload', app);
+        console.log('after unload', app);
       },
     ],
   },

@@ -2,8 +2,8 @@ import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css' // Progress 进度条样式
 import Message from '@/components/Messgae/index.js'
 import { getToken, removeToken, removeUserInfo, getUserInfo } from '@/utils/auth.js'
-import Vue from 'vue'
-const whiteList = ['/login', '/404']
+
+const whiteList = ['/login','/register','/404']
 
 const limitRoute = router => {
   router.beforeEach((to, from, next) => {

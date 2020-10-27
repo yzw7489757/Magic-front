@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <span class="wrapper">
         <input
         :value="value"
         class="yinput"
@@ -26,7 +26,7 @@
               <svg-icon icon-class="tips" class="icon-title"></svg-icon>
               <span class="title_message">{{title}}</span>
           </div>
-    </div>
+    </span>
 </template>
 <script>
 import Emitter from '@/mixins/emitter'

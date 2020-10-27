@@ -8,7 +8,7 @@ export const Login = data =>
   })
 export const Register = data =>
   request({
-    url: '/api/user/insert',
+    url: '/api/user/register',
     method: 'post',
     data
   })

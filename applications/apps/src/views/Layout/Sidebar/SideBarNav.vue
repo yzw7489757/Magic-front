@@ -17,11 +17,11 @@
                         class="menu-icon"
                         v-if="child.meta && child.meta.icon"
                         :icon-class="child.meta.icon"/>
-                      <p
+                      <div
                       class="menu-title"
                       v-if="child.meta && child.meta.title"
                       >{{child.meta.title}}
-                      </p>
+                      </div>
                   </router-link>
                 </li>
             </template>
@@ -46,7 +46,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .menu{
   &-link{
     display:block;

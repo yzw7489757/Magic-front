@@ -165,8 +165,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import "~@/style/mixin.scss";
+<style lang="less" scoped>
+@import "~@/style/mixin.less";
 
 .home-content {
   width:100%;
@@ -210,13 +210,13 @@ export default {
   &-content{
     padding: 15px 20px;
     .title{
-      @include title(1.3em, 1.5em, inherit, 500,'"Roboto", "Helvetica", "Arial", sans-serif')
+      .title(1.3em, 1.5em, inherit, 500,'"Roboto", "Helvetica", "Arial", sans-serif');
       min-height: 32px;
       margin-top: 0;
       margin-bottom: 5px;
     }
     .category{
-      @include text(16px, 1.6em, #999)
+      .text(16px, 1.6em, #999);
     }
   }
   &-footer{
@@ -224,7 +224,7 @@ export default {
     padding-top: 10px;
     border-top: 1px solid #eeeeee;
     .stats{
-      @include text(12px, 22px, #999)
+      .text(12px, 22px, #999);
       display: inline-block;
     }
   }

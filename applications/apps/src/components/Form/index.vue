@@ -109,7 +109,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
 .y-form.inline{
   .y-form-item{
     display: inline-flex;

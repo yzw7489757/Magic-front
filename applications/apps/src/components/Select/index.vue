@@ -96,7 +96,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="less">
 
 .y-select {
   min-width: 160px;
