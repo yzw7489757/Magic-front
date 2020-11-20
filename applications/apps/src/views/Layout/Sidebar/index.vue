@@ -3,7 +3,7 @@
           <div class="sidebar-container">
               <div class="logo">
                 <router-link to="/" tag="a" class="logo-normal">
-                    Creative Tim
+                    Creative Magic
                 </router-link>
               </div>
               <div class="sidebar-content">

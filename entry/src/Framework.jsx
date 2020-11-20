@@ -1,12 +1,8 @@
-/**
- * @author Kuitos
- * @since 2019-05-16
- */
-
 import React from 'react';
 import style from './index.less';
 import Loading from './Loading';
 import { colonyList } from '../../apps';
+console.log('colonyList: ', colonyList);
 
 function useForceUpdate() {
   const [, forceUpdate] = React.useState(0);

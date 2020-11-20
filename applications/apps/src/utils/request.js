@@ -1,7 +1,7 @@
 import axios from 'axios'
-import Message from '@/components/Messgae/index.js'
+import Message from '@/components/Message/index'
 import { router } from '@/main'
-import get from 'lodash/get'
+// import get from 'lodash/get'
 // import store from '@/store'
 
 const baseUrl = process.env.VUE_APP_REQUEST_URL

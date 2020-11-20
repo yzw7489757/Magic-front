@@ -1,12 +1,18 @@
 <template>
   <div>
-    Detail
+    Config
   </div>
 </template>
 
 <script>
 export default {
-  name: 'projectDetail'
+  name: 'AppConfig',
+  data: {
+    configInfo: null,
+  },
+  created() {
+
+  }
 }
 </script>
 

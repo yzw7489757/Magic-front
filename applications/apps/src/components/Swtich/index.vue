@@ -19,11 +19,11 @@ export default {
     },
     'open-text': {
       type: String,
-      default: () => '开'
+      default: () => 'Open'
     },
     'close-text': {
       type: String,
-      default: () => '关'
+      default: () => 'Close'
     }
   },
   methods: {
@@ -43,6 +43,7 @@ export default {
   &-item{
     position:relative;
     float:left;
+    margin: 0;
     &>span{
       position: relative;
       display: block;

@@ -11,8 +11,15 @@ module.exports = {
       "name": "REACT APP",
       "title": "reactApp",
       "prefix": "/reactApp",
-      "devUrl": "//localhost:7102",
+      "devUrl": "//0.0.0.0:7102",
       "onlineUrl":"//reactApp.yuanziwen.cn"
+    },
+    {
+      "name": "REACT DEMO",
+      "title": "react Demo",
+      "prefix": "/reactDemo",
+      "devUrl": "//localhost:7103",
+      "onlineUrl":"//reactDemo.yuanziwen.cn"
     }
   ],
   defaultApp: "/apps",

@@ -4,8 +4,8 @@
       <a-form-model-item label="App Name" >
         <a-input v-model.trim="formInfo.appName"  placeholder=""/>
       </a-form-model-item>
-      <a-form-model-item label="Running Statu" >
-        <a-select :options="runningList" v-model="formInfo.running" />
+      <a-form-model-item label="Running Statu">
+        <a-select :options="runningList" v-model="formInfo.running"  style="min-width: 120px"/>
       </a-form-model-item>
       <a-form-model-item label="Creator" >
         <a-input v-model.trim="formInfo.creator"  placeholder=""/>
@@ -21,10 +21,10 @@
         <a-form-model-item label="App Name" prop="appName">
           <a-input v-model.trim="appInfo.appName"  placeholder=""/>
         </a-form-model-item>
-        <a-form-model-item label="Platform" prop="platform">
-          <a-select :options="options" v-model="formInfo.platform"/>
+        <a-form-model-item label="Platform" prop="platform" extra="Only Display needs">
+          <a-select :options="options" v-model="appInfo.platform"/>
         </a-form-model-item>
-        <a-form-model-item label="Running Statu">
+        <a-form-model-item label="Running Statu" :label-col="{ span: 7 }" :wrapper-col="{ span: 14 }">
           <a-switch v-model="appInfo.delivery" />
         </a-form-model-item>
         <a-form-model-item label="">
@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     handleSubmit(){
-      this.$emit('onSearch', application)
+      this.$emit('onSearch', this.formInfo)
     },
     toggleModal() {
       this.open = !this.open
@@ -100,24 +100,14 @@ export default {
       // }
       // window.requestAnimationFrame(addNew)
     },
-    validator() {
-      return new Promise((resolve, reject) => {
-        this.$refs.projectInfo.validate().then((res) => {
-          if (!res) {
-            this.$msg.error('请正确填写')
-          } else {
-            resolve()
-          }
-        })
-      })
-    },
     async triggerToAddNewProject(status) {
       if (!status) {
         return this.toggleModal()
       }
       try {
-        await this.validator()
-        await addNewApplication({
+        const validate = await this.$refs.appForm.validate()
+        console.log('validate: ', validate);
+        const { code, error } = await addNewApplication({
           ...this.appInfo,
           createTime: new Date(), // 创建时间
           creator: getUserInfo().nickName // 创建者
@@ -125,6 +115,7 @@ export default {
         this.toggleModal()
         this.$msg.primary('添加成功')
       } catch (e) {
+        console.log('e: ', e);
         this.$msg.error(e)
       }
     }

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "target": "esnext",
+    "module": "umd",
+    "jsx": "react",
+    "removeComments": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "./lib"
+  },
+  "include": [
+    "src",
+    "demo"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -13,9 +13,10 @@ const productionGzipExtensions = ['js', 'css'];
 
 const port = 7101; // dev port
 const address = isPROD ? process.env.VUE_APP_DOMAIN : `localhost:${port}`
+const IN_HTTPS = !!process.env.HTTPS;
 
 function resolve(dir) {
-  return path.join(__dirname, dir);
+  return path.resolve(__dirname, dir);
 }
 
 module.exports = {
@@ -36,6 +37,7 @@ module.exports = {
   devServer: {
     // host: '0.0.0.0',
     open: false,
+    https: IN_HTTPS,
     hot: true,
     disableHostCheck: true,
     port,
@@ -68,41 +70,92 @@ module.exports = {
       }
     }
   },
+  configureWebpack: {
+    devtool: false,
+    resolve: {
+      extensions: [".js", ".json", ".vue"],
+      alias: {
+        '@': resolve('src'),
+      },
+    },
+    output: {
+      // 把子应用打包成 umd 库格式
+      library: `${name}-[name]`,
+      libraryTarget: 'umd',
+      jsonpFunction: `webpackJsonp_${name}`,
+    },
+    plugins: [
+      isPROD &&
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash].css',
+      }),
+      isPROD && new OptimizeCSSAssetsPlugin(),
+      isPROD &&
+      new CompressionWebpackPlugin({
+        filename: '[path].gz[query]',
+        algorithm: 'gzip',
+        test: new RegExp(`\\.(${productionGzipExtensions.join('|')})$`),
+        threshold: 10240,
+        minRatio: 0.8,
+      }),
+      isPROD && new webpack.SourceMapDevToolPlugin({
+        filename: '[file].map',
+        publicPath: `//${address}/`,
+        moduleFilenameTemplate: '[resource-path]',
+        // append: `\n//# sourceMappingURL=${protocol}://${address}/[url]`
+      }),
+    ].filter(Boolean),
+    optimization: {
+      minimize: true,
+      // minimizer: [
+      //   new UglifyJsPlugin({
+      //     sourceMap: true,
+      //   }),
+      // ],
+    },
+  },
   // 自定义webpack配置
-  configureWebpack: (config) => {
-    // const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
-    // types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
-    config.devtool = false;
-    config.resolve.alias['@'] = resolve('src');
-    config.output.library= `${name}-[name]`;
-    config.output.libraryTarget= 'umd';
-    config.output.jsonpFunction= `webpackJsonp_${name}`;
-    config.optimization.minimize = true
-    // config.optimization.minimizer = [
-    //   new UglifyJsPlugin({
-    //       sourceMap: true,
-    //   })
-    // ]
-    if(isPROD) {
-      config.plugins.push(
-        new MiniCssExtractPlugin({
-          filename: 'css/[name].[contenthash].css',
-        }),
-        new OptimizeCSSAssetsPlugin(),
-        new CompressionWebpackPlugin({
-          filename: '[path].gz[query]',
-          algorithm: 'gzip',
-          test: new RegExp(`\\.(${productionGzipExtensions.join('|')})$`),
-          threshold: 10240,
-          minRatio: 0.8,
-        }),
-        new webpack.SourceMapDevToolPlugin({
-          filename: '[file].map',
-          publicPath: `//${address}/`,
-          moduleFilenameTemplate: '[resource-path]',
-          // append: `\n//# sourceMappingURL=${protocol}://${address}/[url]`
-        })
-      )
-    }
-  }
-};
+  // configureWebpack: (config) => {
+  //   config.devtool = false;
+  //   config.resolve.alias = {
+  //     '@': resolve('src')
+  //   }
+  //   Object.assign(config.output, {
+  //     // 把子应用打包成 umd 库格式
+  //     library: `${name}-[name]`,
+  //     libraryTarget: 'umd',
+  //     jsonpFunction: `webpackJsonp_${name}`,
+  //   });
+  //   config.optimization = {
+  //     minimize: true,
+  //     minimizer: [
+  //       new UglifyJsPlugin({
+  //         sourceMap: true,
+  //       })
+  //     ]
+  //   }
+  //   config.plugins = [];
+  //   if (isPROD) {
+  //     config.plugins.push(
+  //       new MiniCssExtractPlugin({
+  //         filename: 'css/[name].[contenthash].css',
+  //       }),
+  //       new OptimizeCSSAssetsPlugin(),
+  //       new CompressionWebpackPlugin({
+  //         filename: '[path].gz[query]',
+  //         algorithm: 'gzip',
+  //         test: new RegExp(`\\.(${productionGzipExtensions.join('|')})$`),
+  //         threshold: 10240,
+  //         minRatio: 0.8,
+  //       }),
+  //       new webpack.SourceMapDevToolPlugin({
+  //         filename: '[file].map',
+  //         publicPath: `//${address}/`,
+  //         moduleFilenameTemplate: '[resource-path]',
+  //         // append: `\n//# sourceMappingURL=${protocol}://${address}/[url]`
+  //       })
+  //     )
+  //   }
+  //   return config
+  // }
+}

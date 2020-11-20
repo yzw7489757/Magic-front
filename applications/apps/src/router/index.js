@@ -36,29 +36,29 @@ const routes = [
         }
       },
       {
-        path: 'project',
-        name: 'project',
+        path: 'apps',
+        name: 'apps',
         meta: {
           title: '应用信息'
         },
         component: { render: h => h('router-view') },
         children: [
           {
-            path: '/views/project',
-            redirect: '/views/project/list'
+            path: '/views/apps',
+            redirect: '/views/apps/list'
           },
           {
-            path: '/views/project/list',
-            name: 'projectList',
-            component: () => import('@/views/Project/ProjectList'),
+            path: '/views/apps/list',
+            name: 'appList',
+            component: () => import('@/views/Apps/List'),
             meta: {
               title: '应用列表'
             }
           },
           {
-            path: '/views/project/detail/:id',
-            name: 'projectDetail',
-            component: () => import('@/views/Project/ProjectDetail'),
+            path: '/views/apps/config/:id',
+            name: 'app-config',
+            component: () => import('@/views/Apps/Config'),
             meta: {
               title: '应用详情'
             }

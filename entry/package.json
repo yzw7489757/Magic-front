@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "parcel index.html --port 7099",
+    "start": "parcel index.html --https --port 7099",
     "build": "npm run clean && parcel build index.html",
     "clean": "rm -rf ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"

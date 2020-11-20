@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "module": "esNext",
+    "target": "esnext",
+    "jsx": "react"
+  },
+  "include": [
+    "src",
+    "demo"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
