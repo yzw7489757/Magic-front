@@ -1,0 +1,120 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "prettier"
+  ],
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/react"
+  ],
+  "rules": {
+    "valid-typeof": 0,
+    "prefer-destructuring": 0,
+    "prefer-const":0,
+    "function-paren-newline": 0,
+    "import/extensions":0,
+    "no-template-curly-in-string": 0,
+    "no-underscore-dangle": 0,
+    "quote-props": 0,
+    "react/no-find-dom-node": 0,
+    "arrow-body-style": 1,
+    "class-methods-use-this": 0,
+    "comma-dangle": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "comma-spacing": 1,
+    "camelcase": 0,
+    "global-require": 0,
+    "no-useless-escape": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-dynamic-require": 0,
+    "import/prefer-default-export": 0,
+    "indent": 1,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/img-has-alt": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/label-has-associated-control": [ "error", {
+      "required": {
+        "some": [ "nesting", "id"  ]
+      }
+    }],
+    "jsx-a11y/label-has-for": [ "error", {
+      "required": {
+        "some": [ "nesting", "id"  ]
+      }
+    }],    
+    "no-bitwise": 0,
+    "key-spacing": 1,
+    "keyword-spacing": 0,
+    "react/no-array-index-key": 0,
+    "max-len": 0,
+    "no-debugger": 1,
+    "no-else-return": 0,
+    "no-empty": 1,
+    "no-tabs": 1,
+    "no-trailing-spaces": 0,
+    "no-unused-expressions": 0,
+    "no-unused-vars": 1,
+    "no-use-before-define": 0,
+    "object-curly-spacing": 0,
+    "padded-blocks": 0,
+    "object-curly-newline": 0,
+    "react/jsx-no-target-blank":0,
+    "react/forbid-prop-types": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-wrap-multilines": 0,
+    "react/require-default-props": 0,
+    "react/jsx-closing-bracket-location": 0,
+    "react/jsx-closing-tag-location": 0,
+    "react/jsx-filename-extension": 0,
+    "react/no-unused-prop-types": 1,
+    "react/jsx-first-prop-new-line": 0,
+    "react/jsx-max-props-per-line": 0,
+    "react/prefer-stateless-function": 0,
+    "react/self-closing-comp": 1,
+    "react/destructuring-assignment": 0,
+    "semi": 1,
+    "space-before-blocks": 0,
+    "import/no-unresolved": 0,
+    "@typescript-eslint/explicit-member-accessibility": 0,
+    "prettier/prettier": [
+      "warn",
+      {
+        "singleQuote": true,
+        "printWidth": 120,
+        "trailingComma": "es5",
+        "arrowParens": "avoid"
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/camelcase": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-this-alias":0,
+    "react/static-property-placement": 0,
+    "react/state-in-constructor": 0,
+    "react/jsx-props-no-spreading": 0,
+    "no-console": 0,
+    "func-names": 0,
+    "@typescript-eslint/interface-name-prefix": 0,
+  },
+  "globals": {
+    "require": true
+  },
+  "overrides": [
+    {
+      "files": ["**/*.tsx"],
+      "rules": {
+          "react/prop-types": "off"
+      }
+    }
+]
+}

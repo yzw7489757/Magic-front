@@ -25,7 +25,7 @@
     "stage:performance": "cd applications/performance && yarn stage",
     "stage:apps": "cd applications/apps && yarn stage",
     "stage:website": "cd applications/website && yarn stage",
-    "start": "concurrently \"yarn start:main\" \"yarn start:performance\" \"yarn start:apps\" \"yarn start:demo\"",
+    "start": "concurrently \"yarn start:main\" \"yarn start:performance\" \"yarn start:apps\" \"yarn start:website\"",
     "start:main": "cd ./entry && HTTPS=true yarn start",
     "start:performance": "cd applications/performance && HTTPS=true yarn start",
     "start:website": "cd applications/website && HTTPS=true yarn start",

@@ -8,18 +8,18 @@ module.exports = {
       "onlineUrl":"//apps.yuanziwen.cn"
     },
     {
-      "name": "REACT APP",
-      "title": "reactApp",
-      "prefix": "/reactApp",
+      "name": "性能监测",
+      "title": "Performance",
+      "prefix": "/perf",
       "devUrl": "//0.0.0.0:7102",
-      "onlineUrl":"//reactApp.yuanziwen.cn"
+      "onlineUrl":"//performance.yuanziwen.cn"
     },
     {
-      "name": "REACT DEMO",
-      "title": "react Demo",
-      "prefix": "/reactDemo",
+      "name": "DEMO",
+      "title": "website",
+      "prefix": "/website",
       "devUrl": "//localhost:7103",
-      "onlineUrl":"//reactDemo.yuanziwen.cn"
+      "onlineUrl":"//website.yuanziwen.cn"
     }
   ],
   defaultApp: "/apps",

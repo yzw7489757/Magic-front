@@ -12,7 +12,7 @@ function App() {
           <Switch>
             <Route path="/about" component={() => <div>about</div>} />
             <Route path="/users" component={User} />
-            <Route path="/" component={() => <div>Website Home</div>} />
+            <Route path="/" component={() => <div>Perf Home</div>} />
           </Switch>
         </Suspense>
       </div>

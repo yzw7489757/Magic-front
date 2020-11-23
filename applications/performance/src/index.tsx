@@ -18,7 +18,7 @@ export async function bootstrap() {
   // console.log('vue app bootstraped')
 }
 
-export async function mount() {
+export async function mount(props) {
   // console.log('props from main framework', props)
   render();
 }
