@@ -107,8 +107,6 @@
     "@typescript-eslint/interface-name-prefix": 0,
   },
   "globals": {
-    "XT": true,
-    "g_config": true,
     "require": true
   },
   "overrides": [

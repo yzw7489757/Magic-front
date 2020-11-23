@@ -2,24 +2,32 @@
 
 const fs = require('fs');
 const path = require('path');
+
 const dotenvFiles = [
-  `./envs/.development.env`,
-].filter(Boolean);
+  path.resolve(__dirname, './.env'),
+]
 
 const resolveConfig = (env) => require(`./${env}.env.js`);
 
-dotenvFiles.forEach(dotenvFile => {
-  if (fs.existsSync(dotenvFile)) {
-    require('dotenv-expand')(
-      require('dotenv').config({
-        path: dotenvFile,
-      })
-    );
-  }
-});
+function injectEnvVariable(envFiles) {
+  envFiles.forEach(envFile => {
+    if (fs.existsSync(envFile)) {
+      require('dotenv-expand')(
+        require('dotenv').config({
+          path: envFile,
+        })
+      );
+    }
+  });
+}
 
 const REACT_APP = /^APP_/i;
 function getClientEnvironment(publicUrl, mode) {
+  
+  injectEnvVariable(
+    [...dotenvFiles]
+  );
+
   const envConfig = resolveConfig(mode)
   const raw = Object.keys(process.env)
     .filter(key => REACT_APP.test(key))

@@ -1,10 +1,11 @@
 {
   "private": false,
-  "name": "website",
-  "version": "0.1.2",
-  "description": "Magicwebsite",
-  "main": "lib/index.js",
-  "unpkg": "lib/index.js",
+  "name": "<%=projectName%>",
+  "version": "0.0.1",
+  "description": "<%=description%>",
+  "main": "./lib/index.js",
+  "unpkg": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "precommit.silent": true,
   "pre-commit": [
     "lint"
@@ -16,7 +17,7 @@
     "*.js.map"
   ],
   "scripts": {
-    "start": "webpack-dev-server --config .script/webpack.dev.js --hot --inline --mode=development",
+    "start": "webpack-dev-server --config .script/webpack.dev.js --hot --inline --progress",
     "https": "HTTPS=true npm start",
     "build:umd": "webpack --config .script/webpack.umd.js --hide-modules --progress --colors",
     "build:umd-main": "webpack --config .script/webpack.main.umd.js --hide-modules --progress --colors",
@@ -40,7 +41,8 @@
   "dependencies": {
     "antd": "^4.8.4",
     "react": "^17.0.1",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "webpackbar": "^5.0.0-3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 const IS_PRO = process.env.NODE_ENV === 'production';
 const User = lazy(() => import('./views/User/index'));
 
+console.log(process.env);
 function App() {
   return (
     <Router basename={window.__POWERED_BY_QIANKUN__ ? `${process.env.ROUTER_BASE_URL || '/'}` : '/'}>

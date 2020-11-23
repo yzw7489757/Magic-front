@@ -19,9 +19,6 @@ const umdConfig = {
   devtool: 'none',
 }
 
-umdConfig.module.rules[1].oneOf[0].use[0].loader = umdConfig.module.rules[1].oneOf[1].use[0].loader = MiniCssExtractPlugin.loader;
-umdConfig.module.rules[1].oneOf[0].use[0].options = umdConfig.module.rules[1].oneOf[1].use[0].options = {};
-
 module.exports = {
   ...umdConfig,
 
@@ -63,5 +60,4 @@ module.exports = {
     new MiniCssExtractPlugin({}),
     !!process.env.HTTPS && new BundleAnalyzerPlugin()
   ].filter(Boolean),
-
 };

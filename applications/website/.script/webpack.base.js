@@ -112,7 +112,7 @@ const base = {
   },
 
   plugins: [
-    new webpack.BannerPlugin({banner: `${name}@${version}`})
+    new webpack.BannerPlugin({banner: `${name}@${version}`}),
   ],
 }
 
