@@ -14,9 +14,9 @@ const { name, version } = require('../package.json')
 const umdConfig = {
   ...base.baseConfig,
 
-  mode: process.env.BUILD_ENV ? 'production' : 'none',
+  mode: "development",
 
-  devtool: 'none',
+  devtool: 'cheap-module-eval-source-map',
 }
 
 module.exports = {

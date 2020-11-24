@@ -23,7 +23,6 @@ module.exports = {
     }
   ],
   defaultApp: "/apps",
-  mainApp: "main",
-  // webPath:'/Users/floyd_yzw/Documents',
+  stageWebPath:'/Users/ziwen/Documents',
   webPath:'/data/www/magic-front',
 }

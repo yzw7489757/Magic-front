@@ -12,7 +12,7 @@ const externals = require('./externals');
 const { name, version } = require('../package.json')
 
 const umdConfig = {
-  ...base,
+  ...base.baseConfig,
 
   mode: process.env.BUILD_ENV ? 'production' : 'none',
 
@@ -52,7 +52,7 @@ module.exports = {
     library,
     libraryTarget: 'umd',
     filename: '[name].js',
-    path: resolve(__dirname, '../lib'),
+    path: resolve(__dirname, '../build'),
   },
 
   plugins: [

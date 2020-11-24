@@ -56,6 +56,6 @@ module.exports = [{
     library,
     libraryTarget: 'umd',
     filename: '[name].js',
-    path: resolve(__dirname, '../lib')
+    path: resolve(__dirname, '../build')
   },
 }]
